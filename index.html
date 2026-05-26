@@ -5,1133 +5,889 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>世界杯竞猜活动 · Pionex 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ─── Pionex Brand Tokens ─────────────────── */
+/* ─── Design Tokens ──────────────────────── */
 :root {
-  --orange:      #F56200;
-  --orange-light:#FF7A1A;
-  --orange-dim:  #F5620018;
-  --orange-mid:  #F5620030;
-  --green:       #00C076;
-  --green-dim:   #00C07618;
-  --red:         #F0444E;
-  --blue:        #3D9BFF;
+  --orange:       #F56200;
+  --orange-light: #FF8533;
+  --orange-dim:   rgba(245,98,0,0.10);
+  --orange-mid:   rgba(245,98,0,0.22);
+  --amber:        #FFAD42;
+  --green:        #10B981;
+  --green-dim:    rgba(16,185,129,0.12);
+  --red:          #EF4444;
+  --cyan:         #22D3EE;
+  --purple:       #A855F7;
+  --purple-dim:   rgba(168,85,247,0.12);
 
-  --bg:          #13151A;
-  --bg2:         #1A1D24;
-  --surface:     #1E222C;
-  --surface2:    #252933;
-  --border:      #2C3140;
-  --border2:     #353B4A;
+  --bg:       #060608;
+  --bg2:      #0d0e12;
+  --surface:  rgba(255,255,255,0.042);
+  --surface2: rgba(255,255,255,0.026);
+  --surface3: #1c1f2c;
+  --glass:    rgba(255,255,255,0.02);
+  --glass-border: rgba(255,255,255,0.075);
+  --border:   rgba(255,255,255,0.075);
+  --border2:  rgba(255,255,255,0.12);
 
-  --text:        #F0F2F5;
-  --text-dim:    #A0AABB;
-  --text-muted:  #606880;
+  --text:       #F0F2F5;
+  --text-dim:   #A0ABBE;
+  --text-muted: #64718A;
 
-  --radius:      10px;
-  --tab-h:       48px;
+  --radius:   12px;
+  --radius-lg: 16px;
+  --tab-h:    44px;
 }
 
-/* ─── Reset ───────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-
 html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
   font-size: 14px;
   line-height: 1.5;
 }
+
+/* ─── SVG Icon Base ──────────────────────── */
+.icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; flex-shrink: 0;
+}
+.icon svg { width: 100%; height: 100%; }
+.icon-lg { width: 28px; height: 28px; }
+.icon-xl { width: 36px; height: 36px; }
 
 /* ─── HERO ────────────────────────────────── */
 .hero {
   position: relative;
-  background: linear-gradient(135deg, #1a0a00 0%, #2d1000 40%, #0d0f14 100%);
+  background: linear-gradient(180deg, #0e0a04 0%, #0a0604 50%, var(--bg) 100%);
   overflow: hidden;
   padding: 40px 20px 36px;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 80% at 20% 50%, #F5620022 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 80% 30%, #FF7A1A10 0%, transparent 50%);
-}
-
-.hero-inner {
-  position: relative;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.hero-left { flex: 1; }
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #F5620020;
-  border: 1px solid #F5620040;
-  border-radius: 4px;
-  padding: 3px 10px;
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--orange-light);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.hero-eyebrow::before {
-  content: '';
-  width: 5px; height: 5px;
-  background: var(--orange);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%      { opacity:.4; transform:scale(.7); }
-}
-
-.hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 1;
-  letter-spacing: 2px;
-  margin-bottom: 6px;
-  background: linear-gradient(135deg, #fff 40%, var(--orange-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-title span {
-  display: block;
-  font-size: clamp(16px, 2.2vw, 26px);
-  letter-spacing: 5px;
-  background: linear-gradient(90deg, var(--orange) 0%, #FFB347 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 4px;
-}
-
-.hero-sub {
-  font-size: 13px;
-  color: var(--text-dim);
-  margin-bottom: 20px;
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn-signup {
-  height: 42px;
-  padding: 0 28px;
-  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 0.04em;
-  position: relative;
-  overflow: hidden;
-  transition: transform .15s, box-shadow .15s;
-  box-shadow: 0 4px 18px #F5620040;
-}
-
-.btn-signup::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%; width: 60px; height: 100%;
-  background: linear-gradient(90deg, transparent, #ffffff35, transparent);
-  animation: shimmer 2.5s ease-in-out infinite 1s;
-}
-
-@keyframes shimmer {
-  0%   { left: -100%; }
-  100% { left: 200%; }
-}
-
-.btn-signup:active { transform: scale(.97); }
-
-.countdown-box {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.cd-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.cd-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  line-height: 1;
-  color: var(--orange-light);
-  min-width: 30px;
   text-align: center;
 }
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(245,98,0,0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,133,51,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(255,133,51,0.04) 0%, transparent 50%);
+}
+/* scan-line grid */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(0deg, transparent 49.5%, rgba(255,255,255,0.012) 49.5%, rgba(255,255,255,0.012) 50.5%, transparent 50.5%),
+    linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,0.012) 49.5%, rgba(255,255,255,0.012) 50.5%, transparent 50.5%);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 0%, transparent 80%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; max-width: 680px; margin: 0 auto; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,98,0,0.08); border: 1px solid rgba(245,98,0,0.2); border-radius: 20px;
+  padding: 5px 14px; font-size: 11px; font-weight: 600; color: var(--orange-light);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%;
+  box-shadow: 0 0 8px var(--orange);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(.6); } }
 
-.cd-label { font-size: 8px; color: var(--text-muted); }
-
-.cd-sep {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  color: var(--text-muted);
-  margin-top: -4px;
+/* title: sub-text above, big title below */
+.hero-title-sub {
+  font-size: clamp(11px, 2vw, 14px); letter-spacing: 0.3em; color: var(--orange-light);
+  font-weight: 500; text-transform: uppercase; margin-bottom: 6px;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 9vw, 96px); line-height: 0.95;
+  letter-spacing: 4px; margin-bottom: 4px;
+  background: linear-gradient(160deg, #ffffff 20%, #ffd4a0 60%, var(--orange-light) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 0 24px rgba(245,98,0,0.25));
 }
 
-.hero-right {
-  display: none;
-  font-size: 80px;
-  line-height: 1;
-  user-select: none;
-  filter: drop-shadow(0 0 30px #F5620030);
+/* prize pool */
+.hero-prize-wrap {
+  margin: 16px 0 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
 }
+.hero-prize-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.hero-prize-value {
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 7vw, 64px); line-height: 1;
+  letter-spacing: 2px; color: #fff;
+  filter: drop-shadow(0 0 20px rgba(255,173,66,0.4));
+}
+.hero-prize-value span { color: var(--amber); font-size: 0.55em; vertical-align: super; letter-spacing: 0; }
 
-@media (min-width: 640px) { .hero-right { display: block; } }
+.hero-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.btn-signup {
+  height: 46px; padding: 0 36px;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+  border: none; border-radius: 23px; color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.04em;
+  position: relative; overflow: hidden; transition: transform .15s, box-shadow .2s;
+  box-shadow: 0 6px 28px rgba(245,98,0,0.4), inset 0 1px 0 rgba(255,255,255,0.18);
+}
+.btn-signup::after {
+  content: ''; position: absolute; top: 0; left: -100%; width: 60px; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  animation: shimmer 3s ease-in-out infinite 1s;
+}
+@keyframes shimmer { 0% { left: -100%; } 100% { left: 220%; } }
+.btn-signup:hover { box-shadow: 0 8px 36px rgba(245,98,0,0.5), inset 0 1px 0 rgba(255,255,255,0.18); transform: translateY(-1px); }
+.btn-signup:active { transform: scale(.97); }
+
+/* countdown */
+.countdown-box { display: flex; gap: 4px; align-items: center; }
+.cd-unit { display: flex; flex-direction: column; align-items: center; }
+.cd-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1;
+  color: var(--text); min-width: 34px; text-align: center;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px; padding: 2px 6px;
+}
+.cd-label { font-size: 9px; color: var(--text-muted); letter-spacing: 0.05em; margin-top: 3px; }
+.cd-sep { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--text-muted); margin-bottom: 14px; }
+.cd-until { font-size: 11px; color: var(--text-muted); align-self: center; margin-left: 4px; }
+
+/* ─── SLOGAN BAR ──────────────────────────── */
+.slogan-bar {
+  background: linear-gradient(90deg, rgba(245,98,0,0.12) 0%, rgba(255,173,66,0.08) 50%, rgba(245,98,0,0.12) 100%);
+  border-top: 1px solid rgba(245,98,0,0.15);
+  border-bottom: 1px solid rgba(245,98,0,0.1);
+  padding: 10px 20px; text-align: center;
+}
+.slogan-text {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+  background: linear-gradient(90deg, var(--orange-light), var(--amber), var(--orange-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
 
 /* ─── TAB BAR ─────────────────────────────── */
 .tab-bar-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 12px #00000050;
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(6,6,8,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-
-.tab-bar {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  padding: 0 16px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
+.tab-bar { max-width: 680px; margin: 0 auto; display: flex; padding: 8px 12px; gap: 4px; overflow-x: auto; scrollbar-width: none; }
 .tab-bar::-webkit-scrollbar { display: none; }
-
 .tab-item {
-  flex-shrink: 0;
-  height: var(--tab-h);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 18px;
-  cursor: pointer;
-  position: relative;
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 500;
-  transition: color .2s;
-  user-select: none;
-  white-space: nowrap;
+  flex-shrink: 0; height: 34px; display: flex; align-items: center; gap: 7px;
+  padding: 0 14px; cursor: pointer; position: relative; color: var(--text-muted);
+  font-size: 13px; font-weight: 500; transition: color .2s, background .2s; user-select: none; white-space: nowrap;
+  border-radius: 17px;
 }
-
-.tab-item:hover { color: var(--text-dim); }
-
-.tab-item.active { color: var(--orange); }
-
-.tab-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 18px; right: 18px;
-  height: 2px;
+.tab-item:hover { color: var(--text-dim); background: rgba(255,255,255,0.04); }
+.tab-item.active {
+  color: #fff;
   background: var(--orange);
-  border-radius: 2px 2px 0 0;
+  box-shadow: 0 2px 12px rgba(245,98,0,0.35);
 }
-
-.tab-icon { font-size: 16px; }
+.tab-item.active .icon svg { stroke: #fff; }
+.tab-item .icon svg { stroke: currentColor; transition: stroke .2s; }
+.tab-arrow {
+  color: rgba(255,255,255,0.2); font-size: 16px; line-height: 34px;
+  flex-shrink: 0; user-select: none; pointer-events: none;
+  align-self: center;
+}
 
 /* ─── PAGE CONTENT ─────────────────────────── */
-.page-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
+.page-content { max-width: 680px; margin: 0 auto; padding: 0 14px; }
+.section-anchor { display: none; padding-top: 6px; padding-bottom: 32px; }
+.section-anchor.active { display: block; animation: fadeInSection .25s ease-out; }
+@keyframes fadeInSection { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ─── SECTION ANCHORS ────────────────────── */
-.section-anchor {
-  padding-top: 32px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--border);
-}
-
-.section-anchor:last-child { border-bottom: none; }
-
+/* ── Gate-style ECG section divider ─── */
 .section-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 15px; font-weight: 700; color: var(--text); margin: 24px 0 14px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; letter-spacing: 0.06em; text-transform: uppercase;
 }
-
-.section-title::before {
+.section-title::before,
+.section-title::after {
   content: '';
-  width: 3px; height: 16px;
-  background: var(--orange);
-  border-radius: 2px;
-  box-shadow: 0 0 8px #F5620060;
-  flex-shrink: 0;
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
+}
+.section-title::after {
+  background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.15), transparent);
+}
+/* ECG pulse icon before text */
+.section-title-text {
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.section-title-text::before {
+  content: '';
+  display: inline-block; width: 20px; height: 10px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='0,5 4,5 6,1 8,9 10,5 14,5 16,3 18,7 20,5' stroke='%23F56200' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 
-/* ─── CARD BASE ───────────────────────────── */
+/* First section-title in each section no top margin */
+.section-anchor > .section-title:first-child { margin-top: 18px; }
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  margin-bottom: 12px;
+  background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius);
+  padding: 14px; margin-bottom: 12px;
 }
+
+/* ─── INTRO SECTION ───────────────────────── */
+.rules-summary {
+  background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+  padding: 16px; margin-bottom: 14px; line-height: 1.7;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.rules-summary p { font-size: 13px; color: var(--text-dim); margin-bottom: 6px; }
+.rules-summary p:last-child { margin-bottom: 0; }
+.rules-summary em { color: var(--orange-light); font-style: normal; font-weight: 600; }
+.rules-summary strong { color: var(--text); }
+
+.intro-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+@media (min-width: 700px) { .intro-cards { grid-template-columns: repeat(4, 1fr); } }
+.intro-card {
+  background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius);
+  padding: 14px 12px; cursor: pointer; transition: all .25s;
+  display: flex; flex-direction: column; gap: 6px;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  position: relative; overflow: hidden;
+}
+.intro-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+}
+.intro-card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.intro-card:active { transform: scale(.97) translateY(0); }
+.intro-card-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: var(--orange-dim); border: 1px solid rgba(245,98,0,0.15);
+  display: flex; align-items: center; justify-content: center;
+}
+.intro-card-icon .icon { width: 18px; height: 18px; }
+.intro-card-icon .icon svg { stroke: var(--orange-light); }
+.intro-card-title { font-size: 13px; font-weight: 700; color: var(--text); }
+.intro-card-desc { font-size: 11px; color: var(--text-muted); line-height: 1.6; flex: 1; }
+.intro-card-link { font-size: 11px; color: var(--orange-light); font-weight: 600; margin-top: 4px; }
 
 /* ─── TIER CARD ───────────────────────────── */
 .tier-info-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+  padding: 16px; margin-bottom: 14px;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  position: relative; overflow: hidden;
 }
-
-.tier-info-top {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin-bottom: 22px;
+.tier-info-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 10%, var(--orange-mid), transparent 90%);
 }
-
-.tier-info-desc {
-  flex: 1;
-  font-size: 12px;
-  color: var(--text-dim);
-  line-height: 1.8;
-}
-
-.tier-info-desc em {
-  color: var(--orange);
-  font-style: normal;
-  font-weight: 600;
-}
-
-.tier-amount-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  min-width: 110px;
-  text-align: center;
-}
-
-.tier-amount-label {
-  font-size: 10px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.tier-amount-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 30px;
-  color: var(--text);
-  line-height: 1;
-}
-
+.tier-info-top { position: relative; margin-bottom: 10px; padding-right: 130px; }
+.tier-info-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+.tier-info-desc em { color: var(--orange-light); font-style: normal; font-weight: 600; }
+.tier-amount-box { position: absolute; top: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; width: 120px; text-align: center; }
+.tier-amount-label { font-size: 10px; color: var(--text-muted); line-height: 1.4; }
+.tier-amount-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--text); line-height: 1; }
 .tier-usdt-icon {
-  width: 48px; height: 48px;
-  border-radius: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
   background: linear-gradient(135deg, #26a17b, #1a7055);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  color: #fff;
-  box-shadow: 0 2px 16px #26a17b50;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #fff;
+  box-shadow: 0 4px 20px rgba(38,161,123,0.3);
 }
-
-.tier-next-hint {
-  font-size: 10px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
+.tier-next-hint { font-size: 10px; color: var(--text-muted); line-height: 1.5; }
 .tier-next-hint strong { color: var(--text-dim); }
-
-.tier-row-label {
-  font-size: 10px;
-  color: var(--text-muted);
-  margin-bottom: 5px;
-  padding: 0 2px;
-}
-
-.tier-scroll-wrap {
-  overflow-x: auto;
-  scrollbar-width: none;
-  margin: 0 -20px;
-  padding: 0 20px;
-}
-
+.tier-row-label { font-size: 10px; color: var(--text-muted); margin-bottom: 3px; padding: 0 2px; }
+.tier-scroll-wrap { overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
 .tier-scroll-wrap::-webkit-scrollbar { display: none; }
-
 .tier-track-inner { display: flex; flex-direction: column; width: max-content; }
-
 .tier-amounts-row, .tier-dots-row, .tier-badges-row { display: flex; }
-
-.tier-cell {
-  width: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.tc-label {
-  font-size: 10px;
-  color: var(--text-muted);
-  padding-bottom: 6px;
-  white-space: nowrap;
-}
-
-.tc-label.active  { color: var(--text-dim); }
-.tc-label.tcurrent { color: var(--orange); font-weight: 700; }
-
-.tier-dots-row {
-  position: relative;
-  height: 22px;
-}
-
-.tier-line-bg {
-  position: absolute;
-  top: 50%; transform: translateY(-50%);
-  height: 2px;
-  background: #2C3140;
-  border-radius: 1px;
-  z-index: 0;
-}
-
-.tier-line-fill {
-  position: absolute;
-  top: 50%; transform: translateY(-50%);
-  height: 3px;
-  background: linear-gradient(90deg, var(--orange), var(--orange-light));
-  border-radius: 2px;
-  box-shadow: 0 0 8px #F5620060;
-  z-index: 1;
-}
-
-.tier-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #2C3140;
-  border: 1.5px solid #3A4255;
-  position: relative; z-index: 2;
-  flex-shrink: 0;
-}
-
-.tier-dot.tdot-active  { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 5px #F5620060; }
-.tier-dot.tdot-current {
-  width: 12px; height: 12px;
-  background: var(--orange);
-  border: 2.5px solid #fff;
-  box-shadow: 0 0 0 3px #F5620040, 0 0 12px var(--orange);
-}
-
+.tier-cell { width: 72px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tc-label { font-size: 10px; color: var(--text-muted); padding-bottom: 6px; white-space: nowrap; }
+.tc-label.active { color: var(--text-dim); }
+.tc-label.tcurrent { color: var(--orange-light); font-weight: 700; }
+.tier-dots-row { position: relative; height: 22px; }
+.tier-line-bg { position: absolute; top: 50%; transform: translateY(-50%); height: 2px; background: rgba(255,255,255,0.06); border-radius: 1px; z-index: 0; }
+.tier-line-fill { position: absolute; top: 50%; transform: translateY(-50%); height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-light)); border-radius: 2px; box-shadow: 0 0 12px rgba(245,98,0,0.4); z-index: 1; }
+.tier-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--surface3); border: 1.5px solid rgba(255,255,255,0.1); position: relative; z-index: 2; flex-shrink: 0; }
+.tier-dot.tdot-active { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 6px rgba(245,98,0,0.4); }
+.tier-dot.tdot-current { width: 12px; height: 12px; background: var(--orange); border: 2.5px solid #fff; box-shadow: 0 0 0 3px rgba(245,98,0,0.25), 0 0 16px var(--orange); }
 .tier-badges-row { padding-top: 7px; }
-
-.tier-badge {
-  background: #3D1A10;
-  border: 1px solid #5C2A18;
-  border-radius: 5px;
-  padding: 3px 5px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #FF9060;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.tier-badge.tbadge-active  { background: #5C2A18; color: #FFB080; }
-.tier-badge.tbadge-current {
-  background: var(--orange);
-  border-color: var(--orange-light);
-  color: #fff;
-  box-shadow: 0 0 8px #F5620050;
-}
+.tier-badge { background: rgba(245,98,0,0.08); border: 1px solid rgba(245,98,0,0.2); border-radius: 6px; padding: 3px 6px; font-size: 11px; font-weight: 700; color: var(--orange-light); white-space: nowrap; display: flex; align-items: center; gap: 3px; }
+.tier-badge.tbadge-active { background: rgba(245,98,0,0.12); color: #FFB080; }
+.tier-badge.tbadge-current { background: var(--orange); border-color: var(--orange-light); color: #fff; box-shadow: 0 0 12px rgba(245,98,0,0.4); }
 
 .btn-deposit {
-  width: 100%;
-  max-width: 320px;
-  height: 46px;
-  display: block;
-  margin: 20px auto 0;
-  background: linear-gradient(135deg, var(--orange), var(--orange-light));
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 0.06em;
-  box-shadow: 0 4px 18px #F5620040;
-  transition: transform .15s;
+  width: 100%; max-width: 280px; height: 42px; display: block; margin: 14px auto 0;
+  background: linear-gradient(135deg, var(--orange), var(--orange-light)); border: none; border-radius: 10px;
+  color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; letter-spacing: 0.06em;
+  box-shadow: 0 4px 24px rgba(245,98,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform .15s, box-shadow .2s;
 }
-
+.btn-deposit:hover { box-shadow: 0 6px 32px rgba(245,98,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15); }
 .btn-deposit:active { transform: scale(.98); }
+
+/* ─── BUY POINTS ─────────────────────────── */
+.buy-pts-note {
+  font-size: 12px; color: var(--text-muted); line-height: 1.7;
+  margin-bottom: 12px; padding: 0 2px;
+}
+.buy-pts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px; }
+.buy-pts-card {
+  background: var(--surface); border: 2px solid var(--glass-border); border-radius: var(--radius);
+  padding: 14px 10px; text-align: center; cursor: pointer; transition: all .2s; position: relative;
+}
+.buy-pts-card:hover { border-color: rgba(245,98,0,0.3); }
+.buy-pts-card.selected { border-color: var(--orange); background: var(--orange-dim); box-shadow: 0 0 14px rgba(245,98,0,0.15); }
+.buy-pts-card.hot::before {
+  content: '热门'; position: absolute; top: -1px; right: -1px;
+  background: var(--orange); color: #fff; font-size: 9px; font-weight: 700;
+  padding: 2px 7px; border-radius: 0 var(--radius) 0 6px; letter-spacing: 0.04em;
+}
+.buy-pts-amount { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--amber); line-height: 1; margin-bottom: 2px; }
+.buy-pts-label { font-size: 10px; color: var(--text-muted); margin-bottom: 8px; }
+.buy-pts-price { font-size: 12px; font-weight: 700; color: var(--text-dim); }
+.buy-pts-bonus { font-size: 10px; color: var(--green); margin-top: 3px; font-weight: 600; }
+.btn-buy-pts {
+  width: 100%; height: 46px; margin-top: 12px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-light)); border: none; border-radius: 10px;
+  color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 18px rgba(245,98,0,0.3); transition: all .2s;
+}
+.btn-buy-pts:hover { box-shadow: 0 6px 24px rgba(245,98,0,0.4); }
+.btn-buy-pts:active { transform: scale(.98); }
 
 /* ─── DAILY CLAIM ─────────────────────────── */
 .claim-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #F5620008, #FF7A1A08);
-  border: 1px solid #F5620022;
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(245,98,0,0.04); border: 1px solid rgba(245,98,0,0.12);
+  border-radius: var(--radius); padding: 12px 16px; margin-bottom: 12px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
-
-.claim-info { display: flex; flex-direction: column; gap: 3px; }
-
-.claim-title { font-size: 13px; font-weight: 600; }
-
-.claim-sub { font-size: 11px; color: var(--text-muted); }
-
-.claim-sub strong { color: var(--orange); }
-
+.claim-info { display: flex; flex-direction: column; gap: 4px; }
+.claim-title { font-size: 14px; font-weight: 600; }
+.claim-sub { font-size: 12px; color: var(--text-muted); }
+.claim-sub strong { color: var(--orange-light); }
 .btn-claim {
-  height: 36px;
-  padding: 0 22px;
-  background: var(--orange);
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .2s;
-  white-space: nowrap;
-  box-shadow: 0 2px 10px #F5620040;
+  height: 38px; padding: 0 24px; background: var(--orange); border: none; border-radius: 8px;
+  color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: all .2s; white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(245,98,0,0.3);
 }
+.btn-claim:hover { box-shadow: 0 4px 18px rgba(245,98,0,0.4); }
+.btn-claim.claimed { background: var(--surface3); color: var(--text-muted); box-shadow: none; cursor: default; }
 
-.btn-claim.claimed {
-  background: var(--surface2);
-  color: var(--text-muted);
-  box-shadow: none;
-  cursor: default;
+/* ─── REVIVE ROW ──────────────────────────── */
+.revive-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(168,85,247,0.04); border: 1px solid rgba(168,85,247,0.12);
+  border-radius: var(--radius); padding: 12px 16px; margin-bottom: 12px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
+.revive-info { display: flex; flex-direction: column; gap: 4px; }
+.revive-title { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.revive-badge { font-size: 9px; background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(168,85,247,0.2); border-radius: 4px; padding: 2px 6px; font-weight: 700; }
+.revive-sub { font-size: 12px; color: var(--text-muted); }
+.revive-sub strong { color: var(--purple); }
+.btn-revive {
+  height: 38px; padding: 0 20px;
+  background: linear-gradient(135deg, #7C3AED, var(--purple)); border: none; border-radius: 8px;
+  color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(168,85,247,0.25); transition: all .2s;
+}
+.btn-revive:hover { box-shadow: 0 4px 20px rgba(168,85,247,0.35); }
+.btn-revive:active { transform: scale(.97); }
 
 /* ─── STAT GRID ───────────────────────────── */
-.stat-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 @media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
-
 .stat-item {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 13px 14px;
+  background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius);
+  padding: 12px 14px; position: relative; overflow: hidden;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-
-.stat-label { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
-
-.stat-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  line-height: 1;
+.stat-item::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--text-muted); opacity: 0.15; border-radius: 0 0 var(--radius) var(--radius);
 }
-
-.stat-value.orange { color: var(--orange); }
+.stat-item.clickable { cursor: pointer; transition: all .2s; }
+.stat-item.clickable:hover { border-color: var(--border2); transform: translateY(-1px); }
+.stat-item.clickable:active { transform: scale(.97); }
+.stat-label { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; letter-spacing: 0.03em; }
+.stat-label .stat-arrow { font-size: 12px; color: var(--text-muted); opacity: 0.5; }
+.stat-item.clickable .stat-arrow { opacity: 1; }
+.stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 30px; line-height: 1; }
+.stat-value.orange { color: var(--orange-light); }
 .stat-value.green  { color: var(--green); }
+.stat-value.gold   { color: var(--amber); }
+.stat-value.purple { color: var(--purple); }
+.stat-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; letter-spacing: 0.02em; }
+/* Color bar on stat items */
+.stat-item:nth-child(1)::after { background: var(--amber); }
+.stat-item:nth-child(2)::after { background: var(--purple); }
+.stat-item:nth-child(3)::after { background: var(--orange); }
+.stat-item:nth-child(4)::after { background: var(--green); }
 
-.stat-sub { font-size: 9px; color: var(--text-muted); margin-top: 2px; }
+/* ─── MATCH LIST (Polymarket style) ──────── */
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.2; } }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; box-shadow: 0 0 8px var(--red); animation: blink 1.2s ease-in-out infinite; flex-shrink: 0; }
 
-/* ─── MATCH CARD ──────────────────────────── */
-.match-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+.match-filter-bar { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.match-filter-bar::-webkit-scrollbar { display: none; }
+.filter-chip {
+  flex-shrink: 0; height: 44px; padding: 0 16px; border-radius: 22px;
+  border: 1.5px solid rgba(255,255,255,0.15); background: var(--surface);
+  color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all .2s; white-space: nowrap;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  display: inline-flex; align-items: center; justify-content: center;
+  touch-action: manipulation;
 }
+.filter-chip:hover { border-color: var(--border2); color: var(--text-dim); }
+.filter-chip.active { border-color: var(--orange); background: var(--orange-dim); color: var(--orange-light); box-shadow: 0 0 12px rgba(245,98,0,0.15); }
 
-@media (min-width: 700px) { .match-grid { grid-template-columns: 1fr 1fr; } }
-
-.match-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  position: relative;
-  overflow: hidden;
+/* ─── CHAMPION LIST ──────────────────────── */
+.champ-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.champ-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 14px; border-radius: var(--radius);
+  background: var(--surface); border: 1.5px solid var(--glass-border);
+  cursor: pointer; transition: all .18s cubic-bezier(0.16,1,0.3,1);
 }
+.champ-row:hover { border-color: var(--border2); background: rgba(255,255,255,0.04); }
+.champ-row.selected { border-color: var(--orange); background: var(--orange-dim); }
+.champ-left { display: flex; align-items: center; gap: 10px; }
+.champ-flag { font-size: 20px; line-height: 1; }
+.champ-name { font-size: 13px; font-weight: 600; }
+.champ-right { display: flex; align-items: center; gap: 10px; }
+.champ-prob { font-size: 11px; color: var(--text-muted); min-width: 30px; text-align: right; }
+.champ-odds { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--amber); min-width: 42px; text-align: right; }
+.champ-check { font-size: 13px; color: var(--orange-light); font-weight: 700; width: 16px; text-align: center; opacity: 0; transition: opacity .15s; }
+.champ-check.visible { opacity: 1; }
 
-.match-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--orange), transparent);
+/* ─── BET SUB-TABS ────────────────────────── */
+.bet-sub-tabs {
+  display: flex; gap: 8px; padding: 16px 0 14px;
 }
-
-.match-status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
+.bet-sub-tab {
+  flex: 1; height: 38px; display: flex; align-items: center; justify-content: center;
+  border-radius: 10px; border: 1px solid var(--glass-border); background: var(--surface);
+  font-size: 12px; font-weight: 600; color: var(--text-muted); cursor: pointer;
+  transition: all .2s; white-space: nowrap; user-select: none;
 }
+.bet-sub-tab:hover { border-color: var(--border2); color: var(--text-dim); }
+.bet-sub-tab.active { border-color: var(--orange); background: var(--orange-dim); color: var(--orange-light); box-shadow: 0 0 10px rgba(245,98,0,0.12); }
 
-.match-live {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--red);
-  letter-spacing: .1em;
+/* ─── COLLAPSIBLE MATCH GROUPS ────────────── */
+.match-status-group { margin-bottom: 10px; }
+.match-group-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 14px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--glass-border);
+  cursor: pointer; user-select: none; transition: border-color .2s, background .2s;
 }
-
-.live-dot {
-  width: 6px; height: 6px;
-  background: var(--red);
-  border-radius: 50%;
-  animation: blink 1s ease-in-out infinite;
+.match-group-header:hover { border-color: var(--border2); background: rgba(255,255,255,0.04); }
+.match-group-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; color: var(--text-dim);
 }
-
-@keyframes blink {
-  0%,100% { opacity:1; }
-  50%      { opacity:.2; }
+.match-group-count {
+  font-size: 10px; color: var(--text-muted); padding: 2px 7px;
+  background: rgba(255,255,255,0.06); border-radius: 10px; font-weight: 500;
 }
-
-.match-timer { font-size: 12px; color: var(--text-muted); }
-
-.match-teams {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.team {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  flex: 1;
-}
-
-.team-flag {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  background: var(--surface2);
-  border: 2px solid var(--border);
-}
-
-.team-name { font-size: 12px; font-weight: 700; }
-
-.score-display {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex: 0 0 auto;
-}
-
-.score-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  line-height: 1;
-  min-width: 26px;
-  text-align: center;
-}
-
-.score-sep {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 30px;
-  color: var(--border2);
-}
-
-/* ─── BET OPTIONS ─────────────────────────── */
-.bet-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 7px;
-  margin-bottom: 12px;
-}
-
-.bet-option {
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 9px 5px;
-  text-align: center;
-  cursor: pointer;
-  transition: all .2s;
-  background: var(--surface2);
-  position: relative;
-  overflow: hidden;
-}
-
-.bet-option:active { transform: scale(.96); }
-
-.bet-option.selected {
-  border-color: var(--orange);
-  background: var(--orange-dim);
-}
-
-.bet-option.selected::after {
-  content: '✓';
-  position: absolute;
-  top: 3px; right: 5px;
-  font-size: 8px;
-  color: var(--orange);
-}
-
-.bet-label { font-size: 11px; font-weight: 700; color: var(--text-dim); margin-bottom: 3px; }
-
-.bet-option.selected .bet-label { color: var(--orange); }
-
-.bet-odds {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  color: #FFB347;
+.match-group-arrow {
+  font-size: 15px; color: var(--text-muted); transition: transform .25s cubic-bezier(0.16,1,0.3,1);
   line-height: 1;
 }
-
-.bet-tickets { font-size: 9px; color: var(--text-muted); margin-top: 2px; }
-
-.pool-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 10px;
+.match-group-arrow.open { transform: rotate(90deg); }
+.match-group-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .38s cubic-bezier(0.16,1,0.3,1);
 }
+.match-group-body.open { max-height: 3000px; }
+.match-group-inner { display: flex; flex-direction: column; gap: 8px; padding-top: 8px; }
 
-.pool-info strong { color: var(--text-dim); font-weight: 500; }
-
-.bet-input-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 9px 14px;
-  margin-bottom: 9px;
+.match-date-group { margin-bottom: 20px; }
+.match-date-label {
+  font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: 10px; padding-left: 2px;
+  display: flex; align-items: center; gap: 8px;
 }
+.match-date-label::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+.match-list { display: flex; flex-direction: column; gap: 8px; }
 
-.bet-input-row label { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
-
-.bet-input-row input {
-  flex: 1;
-  background: none;
-  border: none;
-  color: var(--text);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  text-align: right;
-  outline: none;
-  min-width: 0;
-  width: 60px;
+.mc {
+  background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+  position: relative; overflow: hidden;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.15);
+  transition: border-color .2s, box-shadow .2s;
 }
-
-.bet-input-row input::placeholder { color: var(--border2); }
-
-.bet-input-row .unit { font-size: 11px; color: var(--text-muted); }
-
-.bet-estimate {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 14px;
-  background: #FFB34708;
-  border: 1px solid #FFB34720;
-  border-radius: 8px;
-  margin-bottom: 11px;
-  font-size: 12px;
-  color: var(--text-muted);
+.mc:hover { border-color: var(--border2); box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 1px 4px rgba(0,0,0,0.2); }
+.mc.mc-live { border-color: rgba(239,68,68,0.25); box-shadow: 0 2px 12px rgba(0,0,0,0.25), 0 0 16px rgba(239,68,68,0.06); }
+.mc::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--orange-mid), transparent);
 }
+.mc-live::before { background: linear-gradient(90deg, transparent, rgba(239,68,68,0.3), transparent); }
 
-.bet-estimate strong {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px;
-  color: #FFB347;
+/* Card header */
+.mc-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px 0; font-size: 10px; color: var(--text-muted);
 }
+.mc-status { display: flex; align-items: center; gap: 6px; }
+.mc-status-live { color: var(--red); font-weight: 700; letter-spacing: .06em; display: flex; align-items: center; gap: 5px; }
+.mc-meta { display: flex; align-items: center; gap: 10px; }
+.mc-group { color: var(--text-muted); }
+.mc-time { font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--text-dim); }
 
-.btn-bet {
-  width: 100%;
-  height: 42px;
-  background: linear-gradient(135deg, var(--orange), var(--orange-light));
-  border: none;
-  border-radius: 9px;
-  color: #fff;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .15s;
-  box-shadow: 0 3px 14px #F5620030;
+/* Teams row */
+.mc-teams {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; gap: 8px;
 }
+.mc-team { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+.mc-team.away { flex-direction: row-reverse; }
+.mc-flag { font-size: 22px; flex-shrink: 0; }
+.mc-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mc-score-area { flex: 0 0 auto; text-align: center; min-width: 60px; }
+.mc-score { font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1; letter-spacing: 4px; color: var(--text); }
+.mc-score.muted { color: var(--text-muted); letter-spacing: 2px; }
+.mc-vsep { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
 
-.btn-bet:active { transform: scale(.98); }
-
-.btn-bet:disabled {
-  background: var(--surface2);
-  color: var(--text-muted);
-  box-shadow: none;
-  cursor: not-allowed;
+/* Bet section */
+.mc-bet { padding: 0 14px 12px; }
+.mc-bet-types { display: flex; gap: 5px; margin-bottom: 10px; }
+.mc-bet-chip {
+  height: 30px; padding: 0 12px; border-radius: 15px; font-size: 11px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.55);
+  cursor: pointer; transition: all .18s cubic-bezier(0.16,1,0.3,1); white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center;
+  touch-action: manipulation;
 }
+.mc-bet-chip:hover { border-color: var(--border2); color: var(--text-dim); }
+.mc-bet-chip.active { border-color: var(--orange); background: var(--orange-dim); color: var(--orange-light); }
 
-/* ─── SCHEDULE ────────────────────────────── */
-.date-group { margin-bottom: 22px; }
-
-.date-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-  padding-left: 2px;
+.mc-odds { display: flex; gap: 5px; }
+.mc-odds-btn {
+  flex: 1; border: 1.5px solid var(--glass-border); border-radius: 10px;
+  padding: 11px 4px; text-align: center; cursor: pointer;
+  transition: all .18s cubic-bezier(0.16,1,0.3,1);
+  background: rgba(255,255,255,0.02); position: relative; overflow: hidden;
+  touch-action: manipulation;
 }
+.mc-odds-btn:hover { border-color: var(--border2); background: rgba(255,255,255,0.04); }
+.mc-odds-btn:active { transform: scale(.96); }
+.mc-odds-btn.selected { border-color: var(--orange); background: var(--orange-dim); box-shadow: 0 0 12px rgba(245,98,0,0.18) inset, 0 0 8px rgba(245,98,0,0.12); }
+.mc-odds-label { font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 3px; }
+.mc-odds-btn.selected .mc-odds-label { color: var(--orange-light); }
+.mc-odds-val { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--amber); line-height: 1; }
+.mc-odds-vol { font-size: 9px; color: rgba(255,255,255,0.35); margin-top: 3px; }
 
-.schedule-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
+/* Score grid */
+.mc-score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+.mc-score-btn {
+  border: 1.5px solid var(--glass-border); border-radius: 8px; padding: 7px 4px; text-align: center;
+  cursor: pointer; transition: all .15s; background: rgba(255,255,255,0.02); position: relative;
 }
+.mc-score-btn:hover { border-color: var(--border2); }
+.mc-score-btn.selected { border-color: var(--orange); background: var(--orange-dim); }
+.mc-score-btn .sv { font-family: 'Bebas Neue', sans-serif; font-size: 17px; line-height: 1; color: var(--text); }
+.mc-score-btn.selected .sv { color: var(--orange-light); }
+.mc-score-btn .so { font-size: 9px; color: var(--amber); margin-top: 2px; }
 
-@media (min-width: 700px) { .schedule-grid { grid-template-columns: 1fr 1fr; } }
+/* Pool info */
+.mc-pool { font-size: 10px; color: var(--text-muted); margin: 6px 0 0; display: flex; justify-content: space-between; }
+.mc-pool strong { color: var(--text-dim); font-weight: 500; }
 
-.schedule-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 14px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: border-color .2s;
+/* Expand bet input */
+.mc-expand {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s cubic-bezier(0.16,1,0.3,1);
 }
-
-.schedule-item:hover { border-color: var(--border2); }
-
-.schedule-time {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 16px;
-  color: var(--text-muted);
-  min-width: 40px;
+.mc-expand.open { max-height: 200px; }
+.mc-expand-inner {
+  border-top: 1px solid var(--glass-border); margin-top: 10px; padding-top: 10px;
 }
-
-.schedule-teams { flex: 1; display: flex; flex-direction: column; gap: 2px; }
-
-.schedule-match { font-size: 13px; font-weight: 600; }
-
-.schedule-group { font-size: 10px; color: var(--text-muted); }
-
-.schedule-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+.mc-input-row {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 8px;
+  padding: 7px 12px; margin-bottom: 8px;
 }
-
-.status-badge {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .05em;
-  padding: 2px 7px;
-  border-radius: 4px;
-  text-transform: uppercase;
+.mc-input-row label { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+.mc-input-row input {
+  flex: 1; background: none; border: none; color: var(--text);
+  font-family: 'Bebas Neue', sans-serif; font-size: 22px; text-align: right; outline: none; min-width: 0;
 }
-
-.status-live {
-  background: #F0444E20;
-  color: var(--red);
-  border: 1px solid #F0444E40;
-  animation: badge-pulse 2s ease-in-out infinite;
+.mc-input-row .unit { font-size: 10px; color: var(--text-muted); }
+.mc-confirm-row { display: flex; align-items: center; gap: 8px; }
+.mc-estimate-inline {
+  flex: 1; display: flex; justify-content: space-between; align-items: center;
+  padding: 7px 12px; background: rgba(255,173,66,0.04); border: 1px solid rgba(255,173,66,0.1);
+  border-radius: 8px; font-size: 11px; color: var(--text-muted);
 }
-
-@keyframes badge-pulse {
-  0%,100% { box-shadow: 0 0 0 0 #F0444E30; }
-  50%      { box-shadow: 0 0 0 4px transparent; }
+.mc-estimate-inline strong { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--amber); }
+.mc-bet-btn-compact {
+  flex-shrink: 0; height: 44px; padding: 0 20px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-light)); border: none; border-radius: 10px;
+  color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700;
+  cursor: pointer; white-space: nowrap; touch-action: manipulation;
+  box-shadow: 0 4px 16px rgba(245,98,0,0.3); transition: all .18s cubic-bezier(0.16,1,0.3,1);
 }
+.mc-bet-btn-compact:hover { box-shadow: 0 6px 20px rgba(245,98,0,0.4); transform: translateY(-1px); }
+.mc-bet-btn-compact:active { transform: scale(.97); box-shadow: 0 2px 8px rgba(245,98,0,0.2); }
 
-.status-upcoming {
-  background: #3D9BFF15;
-  color: var(--blue);
-  border: 1px solid #3D9BFF30;
-}
+/* My pick badge on card */
+.mc-my-pick { display: flex; align-items: center; gap: 6px; margin-top: 8px; padding: 0 14px; padding-bottom: 10px; }
+.mc-done-score { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; color: var(--text-dim); }
 
-.status-done {
-  background: #ffffff08;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-}
-
-.schedule-score {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 17px;
-  letter-spacing: 2px;
-}
-
-.my-pick { font-size: 9px; padding: 1px 6px; border-radius: 3px; }
-.pick-win     { background: #00C07615; color: var(--green); }
-.pick-pending { background: #FFB34715; color: #FFB347; }
+/* ─── STATUS BADGES & PICKS (used in bet tab) ── */
+.status-badge { font-size: 10px; font-weight: 700; letter-spacing: .05em; padding: 3px 8px; border-radius: 5px; text-transform: uppercase; }
+.status-live { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.2); box-shadow: 0 0 8px rgba(239,68,68,0.1); }
+.status-upcoming { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.12); }
+.status-done { background: rgba(255,255,255,0.03); color: var(--text-muted); border: 1px solid var(--glass-border); }
+.my-pick { font-size: 10px; padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+.pick-win     { background: var(--green-dim); color: var(--green); }
+.pick-pending { background: rgba(255,173,66,0.1); color: var(--amber); }
+.pick-lost    { background: rgba(239,68,68,0.08); color: var(--red); }
 
 /* ─── REDEEM ──────────────────────────────── */
-.balance-bar {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
+.balance-bar { display: flex; gap: 10px; margin-bottom: 18px; }
 .balance-chip {
-  flex: 1;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  flex: 1; background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius);
   padding: 11px 14px;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-
-.balance-chip .blabel { font-size: 10px; color: var(--text-muted); margin-bottom: 3px; }
-
-.balance-chip .bvalue {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px;
-  line-height: 1;
-}
-
-.bvalue.orange { color: var(--orange); }
-.bvalue.green  { color: var(--green); }
-
-.redeem-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
+.balance-chip .blabel { font-size: 10px; color: var(--text-muted); margin-bottom: 4px; letter-spacing: 0.03em; }
+.balance-chip .bvalue { font-family: 'Bebas Neue', sans-serif; font-size: 26px; line-height: 1; }
+.bvalue.orange { color: var(--orange-light); }
+.bvalue.gold   { color: var(--amber); }
+.redeem-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 @media (min-width: 700px) { .redeem-grid { grid-template-columns: 1fr 1fr; } }
-
 .redeem-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  position: relative;
-  overflow: hidden;
+  background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+  padding: 14px; position: relative; overflow: hidden;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-
-.redeem-card::after {
-  content: '';
-  position: absolute;
-  top: -20px; right: -20px;
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #F5620008, transparent 70%);
+.redeem-card::before {
+  content: ''; position: absolute; top: -40px; right: -40px; width: 100px; height: 100px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,98,0,0.06), transparent 70%);
 }
-
-.redeem-type {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
+.redeem-type { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .redeem-icon {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
+  width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-
-.icon-orange { background: var(--orange-dim); border: 1px solid var(--orange-mid); }
-.icon-gold   { background: #FFB34715; border: 1px solid #FFB34730; }
-.icon-purple { background: #9B59FF15; border: 1px solid #9B59FF30; }
-
+.redeem-icon .icon svg { width: 22px; height: 22px; }
+.icon-orange { background: var(--orange-dim); border: 1px solid rgba(245,98,0,0.15); }
+.icon-orange .icon svg { stroke: var(--orange-light); }
+.icon-gold   { background: rgba(255,173,66,0.08); border: 1px solid rgba(255,173,66,0.15); }
+.icon-gold .icon svg { stroke: var(--amber); }
+.icon-purple { background: var(--purple-dim); border: 1px solid rgba(168,85,247,0.15); }
+.icon-purple .icon svg { stroke: var(--purple); }
 .redeem-meta { flex: 1; }
-
-.redeem-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
-
+.redeem-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
 .redeem-rate { font-size: 11px; color: var(--text-muted); }
-
-.redeem-rate strong { color: #FFB347; }
-
-.redeem-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 4px;
-}
-
+.redeem-rate strong { color: var(--amber); }
+.redeem-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
 .redeem-limit { font-size: 10px; color: var(--text-muted); }
-
 .redeem-limit strong { color: var(--red); }
-
 .btn-redeem {
-  height: 34px;
-  padding: 0 18px;
-  border-radius: 7px;
-  border: none;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .15s;
+  height: 36px; padding: 0 20px; border-radius: 8px; border: none;
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all .2s;
 }
-
+.btn-redeem:hover { transform: translateY(-1px); }
 .btn-redeem:active { transform: scale(.96); }
-.btn-redeem-orange { background: var(--orange); color: #fff; }
-.btn-redeem-gold   { background: #FFB347; color: #1a0d00; }
-.btn-redeem-purple { background: #9B59FF; color: #fff; }
-
-.merch-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 4px;
-}
-
+.btn-redeem-orange { background: var(--orange); color: #fff; box-shadow: 0 2px 10px rgba(245,98,0,0.25); }
+.btn-redeem-gold   { background: var(--amber); color: #1a0d00; box-shadow: 0 2px 10px rgba(255,173,66,0.2); }
+.btn-redeem-purple { background: var(--purple); color: #fff; box-shadow: 0 2px 10px rgba(168,85,247,0.2); }
+.merch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
 @media (min-width: 700px) { .merch-grid { grid-template-columns: repeat(4, 1fr); } }
-
 .merch-item {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
+  background: var(--surface2); border: 1px solid var(--glass-border); border-radius: var(--radius);
+  padding: 12px; text-align: center;
 }
-
-.merch-emoji { font-size: 30px; margin-bottom: 6px; }
-
-.merch-name { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
-
-.merch-price { font-size: 11px; color: #FFB347; margin-bottom: 8px; }
+.merch-icon { margin-bottom: 8px; display: flex; justify-content: center; }
+.merch-icon .icon svg { width: 32px; height: 32px; stroke: var(--text-dim); }
+.merch-name { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.merch-price { font-size: 11px; color: var(--amber); margin-bottom: 10px; }
 
 /* ─── NOTICE ──────────────────────────────── */
 .notice {
-  background: #3D9BFF0C;
-  border: 1px solid #3D9BFF22;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.7;
+  background: rgba(34,211,238,0.03); border: 1px solid rgba(34,211,238,0.1);
+  border-radius: 10px; padding: 12px 16px; font-size: 11px; color: var(--text-muted); line-height: 1.8;
 }
+.notice strong { color: var(--cyan); }
 
-.notice strong { color: #6FB3FF; }
+/* ─── MODALS ──────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 500;
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal-sheet {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 501;
+  background: var(--bg2); border-top: 1px solid var(--border2);
+  border-radius: 20px 20px 0 0;
+  max-height: 70vh; display: flex; flex-direction: column;
+  transform: translateY(100%); transition: transform .3s cubic-bezier(.32,.72,0,1);
+  max-width: 640px; margin: 0 auto;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.4);
+}
+.modal-sheet.open { transform: translateY(0); }
+
+.modal-handle { width: 36px; height: 4px; background: var(--surface3); border-radius: 2px; margin: 12px auto 0; flex-shrink: 0; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px 12px; flex-shrink: 0; border-bottom: 1px solid var(--glass-border); }
+.modal-header h3 { font-size: 16px; font-weight: 700; }
+.modal-close {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--surface3); border: 1px solid var(--glass-border);
+  color: var(--text-muted); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all .2s;
+}
+.modal-close:hover { background: var(--border2); color: var(--text); }
+.modal-body { flex: 1; overflow-y: auto; padding: 14px 18px 28px; }
+
+/* history list */
+.history-list { display: flex; flex-direction: column; gap: 1px; }
+.history-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--glass-border); }
+.history-item:last-child { border-bottom: none; }
+.history-left { display: flex; flex-direction: column; gap: 3px; }
+.history-type { font-size: 13px; font-weight: 600; }
+.history-time { font-size: 10px; color: var(--text-muted); }
+.history-amount { font-family: 'Bebas Neue', sans-serif; font-size: 22px; }
+.history-amount.pos { color: var(--green); }
+.history-amount.neg { color: var(--red); }
+
+/* bet history */
+.bet-history-item { padding: 14px 0; border-bottom: 1px solid var(--glass-border); }
+.bet-history-item:last-child { border-bottom: none; }
+.bet-history-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.bet-history-match { font-size: 13px; font-weight: 600; }
+.bet-status { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 5px; }
+.bet-status-win     { background: var(--green-dim); color: var(--green); }
+.bet-status-lose    { background: rgba(239,68,68,0.08); color: var(--red); }
+.bet-status-pending { background: rgba(255,173,66,0.08); color: var(--amber); }
+.bet-history-detail { font-size: 11px; color: var(--text-muted); }
+.bet-history-detail span { margin-right: 12px; }
+
+/* revive tiers */
+.revive-tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+.revive-tier-card {
+  background: var(--surface); border: 2px solid var(--glass-border); border-radius: var(--radius);
+  padding: 16px 10px; text-align: center; cursor: pointer; transition: all .2s;
+}
+.revive-tier-card:hover { border-color: rgba(168,85,247,0.3); }
+.revive-tier-card.selected { border-color: var(--purple); background: var(--purple-dim); box-shadow: 0 0 16px rgba(168,85,247,0.15); }
+.revive-tier-icon { margin-bottom: 8px; display: flex; justify-content: center; }
+.revive-tier-icon .icon svg { width: 28px; height: 28px; stroke: var(--purple); }
+.revive-tier-count { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--purple); line-height: 1; }
+.revive-tier-label { font-size: 10px; color: var(--text-muted); margin: 3px 0 8px; }
+.revive-tier-price { font-size: 12px; font-weight: 700; color: var(--text-dim); }
+.revive-tier-bonus { font-size: 10px; color: var(--green); margin-top: 4px; font-weight: 600; }
+.btn-buy-revive {
+  width: 100%; height: 46px;
+  background: linear-gradient(135deg, #7C3AED, var(--purple)); border: none; border-radius: 10px;
+  color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 18px rgba(168,85,247,0.25); transition: all .2s;
+}
+.btn-buy-revive:hover { box-shadow: 0 6px 24px rgba(168,85,247,0.35); }
+.btn-buy-revive:active { transform: scale(.98); }
+.revive-note { font-size: 11px; color: var(--text-muted); line-height: 1.7; margin-top: 14px; }
+
+/* confirm modal */
+.confirm-summary { background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 16px; }
+.confirm-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; }
+.confirm-row:not(:last-child) { border-bottom: 1px solid var(--glass-border); }
+.confirm-label { color: var(--text-muted); }
+.confirm-value { font-weight: 600; }
+.confirm-value.orange { color: var(--orange-light); }
+.confirm-value.gold { color: var(--amber); }
+.confirm-value.purple { color: var(--purple); }
+.confirm-warn { background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.15); border-radius: 10px; padding: 12px 16px; font-size: 11px; color: #F87171; margin-bottom: 16px; display: none; line-height: 1.6; }
+.confirm-warn.show { display: block; }
+.confirm-actions { display: flex; gap: 12px; }
+.btn-confirm-cancel {
+  flex: 1; height: 46px; background: var(--surface3); border: 1px solid var(--glass-border); border-radius: 10px;
+  color: var(--text-muted); font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all .2s;
+}
+.btn-confirm-cancel:hover { background: var(--border2); color: var(--text-dim); }
+.btn-confirm-go {
+  flex: 2; height: 46px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-light)); border: none; border-radius: 10px;
+  color: #fff; font-family: 'DM Sans', 'Noto Sans SC', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 18px rgba(245,98,0,0.25); transition: all .2s;
+}
+.btn-confirm-go:hover { box-shadow: 0 6px 24px rgba(245,98,0,0.35); }
+.btn-confirm-go:active { transform: scale(.98); }
 
 /* ─── TOAST ───────────────────────────────── */
 #toast {
-  position: fixed;
-  bottom: 72px;
-  left: 50%;
-  transform: translateX(-50%) translateY(14px);
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  border-radius: 10px;
-  padding: 10px 22px;
-  font-size: 13px;
-  color: var(--text);
-  opacity: 0;
-  transition: all .28s ease;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 999;
-  box-shadow: 0 8px 32px #00000080;
+  position: fixed; bottom: 72px; left: 50%; transform: translateX(-50%) translateY(14px);
+  background: var(--surface3); border: 1px solid var(--border2); border-radius: 12px;
+  padding: 12px 24px; font-size: 13px; color: var(--text); opacity: 0;
+  transition: all .28s ease; white-space: nowrap; pointer-events: none; z-index: 999;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
 }
-
 .safe-area { height: 40px; }
 </style>
 </head>
-
 <body>
 
 <!-- ═══ HERO ══════════════════════════════════ -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-eyebrow">世界杯竞猜 · 限时活动</div>
-      <div class="hero-title">
-        <span>FIFA WORLD CUP 2026</span>
-        竞猜赢大奖
-      </div>
-      <div class="hero-sub">净入金 → 领取竞猜券 → 竞猜赛事 → 积分兑换奖品</div>
-      <div class="hero-actions">
-        <button class="btn-signup" id="signupBtn" onclick="handleSignup()">立即报名</button>
-        <div class="countdown-box">
-          <div class="cd-unit">
-            <div class="cd-num" id="cdDays">27</div>
-            <div class="cd-label">天</div>
-          </div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit">
-            <div class="cd-num" id="cdHours">14</div>
-            <div class="cd-label">时</div>
-          </div>
-          <div class="cd-sep">:</div>
-          <div class="cd-unit">
-            <div class="cd-num" id="cdMins">32</div>
-            <div class="cd-label">分</div>
-          </div>
-          <div style="font-size:11px;color:var(--text-muted);margin-left:6px">距活动开始</div>
-        </div>
+    <div class="hero-eyebrow">世界杯竞猜 · 限时活动</div>
+    <div class="hero-title-sub">FIFA WORLD CUP 2026</div>
+    <div class="hero-title">竞猜赢大奖</div>
+
+    <div class="hero-actions">
+      <button class="btn-signup" id="signupBtn" onclick="handleSignup()">立即报名</button>
+      <div class="countdown-box">
+        <div class="cd-unit"><div class="cd-num" id="cdDays">14</div><div class="cd-label">天</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cdHours">08</div><div class="cd-label">时</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cdMins">22</div><div class="cd-label">分</div></div>
+        <div class="cd-until">距活动开始</div>
       </div>
     </div>
-    <div class="hero-right">⚽🏆</div>
   </div>
+</div>
+
+<!-- ═══ SLOGAN ═════════════════════════════════ -->
+<div class="slogan-bar">
+  <span class="slogan-text">激情竞猜，赢实物豪礼！</span>
 </div>
 
 <!-- ═══ TAB BAR ════════════════════════════════ -->
 <div class="tab-bar-wrap">
   <div class="tab-bar" id="tabBar">
-    <div class="tab-item active" data-target="sec-deposit" onclick="scrollToSection('sec-deposit',this)">
-      <span class="tab-icon">💰</span>入金竞猜
+    <div class="tab-item active" data-target="sec-deposit" onclick="switchTab('sec-deposit',this)">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></span>获取积分
     </div>
-    <div class="tab-item" data-target="sec-bet" onclick="scrollToSection('sec-bet',this)">
-      <span class="tab-icon">⚽</span>今日竞猜
+    <span class="tab-arrow">›</span>
+    <div class="tab-item" data-target="sec-bet" onclick="switchTab('sec-bet',this)">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10"/><path d="M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10"/><path d="M2 12h20"/></svg></span>参与竞猜
     </div>
-    <div class="tab-item" data-target="sec-schedule" onclick="scrollToSection('sec-schedule',this)">
-      <span class="tab-icon">📅</span>赛程
+    <span class="tab-arrow">›</span>
+    <div class="tab-item" data-target="sec-history" onclick="switchTab('sec-history',this)">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>竞猜记录
     </div>
-    <div class="tab-item" data-target="sec-redeem" onclick="scrollToSection('sec-redeem',this)">
-      <span class="tab-icon">🎁</span>兑换奖品
+    <span class="tab-arrow">›</span>
+    <div class="tab-item" data-target="sec-redeem" onclick="switchTab('sec-redeem',this)">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>兑换奖品
     </div>
   </div>
 </div>
@@ -1139,35 +895,39 @@ body {
 <!-- ═══ PAGE CONTENT ═══════════════════════════ -->
 <div class="page-content">
 
-<!-- ──────────────────────────────────────────── -->
-<!-- SECTION 1: 入金竞猜                          -->
-<!-- ──────────────────────────────────────────── -->
-<section class="section-anchor" id="sec-deposit">
-  <div class="section-title">入金竞猜</div>
 
-  <!-- Daily Claim -->
-  <div class="claim-row">
-    <div class="claim-info">
-      <div class="claim-title">今日竞猜券</div>
-      <div class="claim-sub">您可领取 <strong>7 张</strong> 竞猜券</div>
+<!-- SECTION 1: 获取积分 -->
+<section class="section-anchor active" id="sec-deposit">
+
+  <div class="section-title"><span class="section-title-text">我的积分</span></div>
+
+  <div class="stat-grid">
+    <div class="stat-item clickable" onclick="openModal('modal-points')">
+      <div class="stat-label">积分余额 <span class="stat-arrow">›</span></div>
+      <div class="stat-value gold" id="pointsDisplay">1,286</div>
+      <div class="stat-sub">点击查看流水</div>
     </div>
-    <button class="btn-claim" id="claimBtn" onclick="claimTickets()">立即领取</button>
+    <div class="stat-item clickable" onclick="switchTab('sec-history',document.querySelector('[data-target=sec-history]'))">
+      <div class="stat-label">竞猜记录 <span class="stat-arrow">›</span></div>
+      <div class="stat-value green">8</div>
+      <div class="stat-sub">共投注 12 场</div>
+    </div>
   </div>
 
-  <!-- Tier Card -->
+  <div class="section-title"><span class="section-title-text">净入金送积分</span></div>
+
   <div class="tier-info-card">
     <div class="tier-info-top">
       <div class="tier-info-desc">
-        完成报名后，<em>净入金金额（等值USDT）</em>达对应门槛，可获得对应的每日抽奖次数（需次日起每天领取）；为确保奖励顺利发放，2026/06/11前请保持奖励对应档位的净入金金额。
+        完成报名后，<em>净入金金额（等值USDT）</em>达对应门槛，每日可领取对应数量积分（次日起每天领取）。
       </div>
       <div class="tier-amount-box">
-        <div class="tier-amount-label">净入金金额（等值USDT）ⓘ</div>
+        <div class="tier-amount-label">当前净入金（等值USDT）</div>
         <div class="tier-amount-value">10,234</div>
         <div class="tier-usdt-icon">T</div>
-        <div class="tier-next-hint">解锁下一等级奖励<br>还差 <strong>39,766 USDT</strong></div>
+        <div class="tier-next-hint">解锁下一等级<br>还差 <strong>39,766 USDT</strong></div>
       </div>
     </div>
-
     <div class="tier-row-label">净入金金额（等值USDT）</div>
     <div class="tier-scroll-wrap" id="tierScrollWrap">
       <div class="tier-track-inner">
@@ -1176,361 +936,438 @@ body {
           <div class="tier-line-bg" id="tierLineBg"></div>
           <div class="tier-line-fill" id="tierLineFill"></div>
         </div>
-        <div class="tier-row-label" style="padding-top:8px">每日抽奖次数</div>
+        <div class="tier-row-label" style="padding-top:8px">每日积分数量</div>
         <div class="tier-badges-row" id="tierBadges"></div>
       </div>
     </div>
-
     <button class="btn-deposit" onclick="showToast('跳转入金页面…')">去入金</button>
   </div>
 
-  <!-- Stats -->
-  <div class="stat-grid">
-    <div class="stat-item">
-      <div class="stat-label">竞猜券余额</div>
-      <div class="stat-value orange">35</div>
-      <div class="stat-sub">可用张数</div>
+  <div class="section-title"><span class="section-title-text">开网格送积分</span></div>
+
+  <div class="tier-info-card">
+    <div class="tier-info-top">
+      <div class="tier-info-desc">
+        活动期间，<em>累计开网格净增投资额（等值USDT）</em>达对应档位，每日可领取对应数量积分（次日起每天领取）。
+      </div>
+      <div class="tier-amount-box">
+        <div class="tier-amount-label">当前净增投资额（等值USDT）</div>
+        <div class="tier-amount-value">—</div>
+        <div class="tier-usdt-icon">T</div>
+        <div class="tier-next-hint" style="color:var(--amber)">规则待确认</div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-label">累计积分</div>
-      <div class="stat-value" style="color:#FFB347">1,286</div>
-      <div class="stat-sub">可兑换奖品</div>
+    <div class="tier-row-label">净增投资额（等值USDT）</div>
+    <div class="tier-scroll-wrap" id="gridTierScrollWrap">
+      <div class="tier-track-inner">
+        <div class="tier-amounts-row" id="gridTierAmounts"></div>
+        <div class="tier-dots-row" id="gridTierDots">
+          <div class="tier-line-bg" id="gridTierLineBg"></div>
+          <div class="tier-line-fill" id="gridTierLineFill"></div>
+        </div>
+        <div class="tier-row-label" style="padding-top:8px">每日积分数量</div>
+        <div class="tier-badges-row" id="gridTierBadges"></div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-label">今日已竞猜</div>
-      <div class="stat-value">15</div>
-      <div class="stat-sub">张竞猜券</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-label">猜对场次</div>
-      <div class="stat-value green">8</div>
-      <div class="stat-sub">共猜 12 场</div>
-    </div>
+    <button class="btn-deposit" style="background:var(--surface3);color:var(--text-muted);box-shadow:none;cursor:default" disabled>规则待确认</button>
   </div>
+
+  <div class="section-title"><span class="section-title-text">积分领取</span></div>
+
+  <div class="claim-row">
+    <div class="claim-info">
+      <div class="claim-title">每日积分</div>
+      <div class="claim-sub">您可领取 <strong>200 积分</strong>（净入金 ≥$10,000 档）</div>
+    </div>
+    <button class="btn-claim" id="claimBtn" onclick="claimPoints()">立即领取</button>
+  </div>
+
+  <div class="section-title"><span class="section-title-text">积分购买</span></div>
+
+  <div class="buy-pts-note">直接购买积分参与竞猜，积分可用于投入赛事结果预测或活动结束后兑换奖品。</div>
+
+  <div class="buy-pts-grid" id="buyPtsGrid"></div>
+  <button class="btn-buy-pts" onclick="confirmBuyPoints()">确认购买</button>
+
 </section>
 
-<!-- ──────────────────────────────────────────── -->
-<!-- SECTION 2: 今日竞猜                          -->
-<!-- ──────────────────────────────────────────── -->
+<!-- SECTION 3: 竞猜 -->
 <section class="section-anchor" id="sec-bet">
-  <div class="section-title">今日竞猜</div>
+  <div class="bet-sub-tabs">
+    <div class="bet-sub-tab active" data-bet-tab="group" onclick="switchBetTab('group',this)">小组赛竞猜</div>
+    <div class="bet-sub-tab" data-bet-tab="knockout" onclick="switchBetTab('knockout',this)">淘汰赛竞猜</div>
+    <div class="bet-sub-tab" data-bet-tab="champion" onclick="switchBetTab('champion',this)">总冠军竞猜</div>
+  </div>
+  <div id="matchListRoot"></div>
+</section>
 
-  <div class="match-grid">
-    <!-- Match 1: Live -->
-    <div class="match-card">
-      <div class="match-status">
-        <div class="match-live"><div class="live-dot"></div>进行中 · 72'</div>
-        <div class="match-timer">截止 <strong style="color:var(--red)">28分钟</strong>后</div>
-      </div>
-      <div class="match-teams">
-        <div class="team">
-          <div class="team-flag">🇧🇷</div>
-          <div class="team-name">巴西</div>
-        </div>
-        <div class="score-display">
-          <div class="score-num">2</div>
-          <div class="score-sep">-</div>
-          <div class="score-num">1</div>
-        </div>
-        <div class="team">
-          <div class="team-flag">🇦🇷</div>
-          <div class="team-name">阿根廷</div>
-        </div>
-      </div>
-      <div class="bet-options" id="betOptions1">
-        <div class="bet-option selected" onclick="selectBet(1,'home',this)">
-          <div class="bet-label">巴西胜</div>
-          <div class="bet-odds">1.8x</div>
-          <div class="bet-tickets">1,240票</div>
-        </div>
-        <div class="bet-option" onclick="selectBet(1,'draw',this)">
-          <div class="bet-label">平局</div>
-          <div class="bet-odds">3.2x</div>
-          <div class="bet-tickets">683票</div>
-        </div>
-        <div class="bet-option" onclick="selectBet(1,'away',this)">
-          <div class="bet-label">阿根廷胜</div>
-          <div class="bet-odds">2.1x</div>
-          <div class="bet-tickets">954票</div>
-        </div>
-      </div>
-      <div class="pool-info">
-        <span>总票池：<strong>2,877 张</strong></span>
-        <span>猜中约 <strong style="color:var(--orange)">2.3x</strong></span>
-      </div>
-      <div class="bet-input-row">
-        <label>投入竞猜券</label>
-        <input type="number" id="betAmount1" value="10" min="1" oninput="calcEstimate(1)">
-        <span class="unit">张</span>
-      </div>
-      <div class="bet-estimate">
-        <span>预计获得积分</span>
-        <strong id="estimate1">≈ 23</strong>
-      </div>
-      <button class="btn-bet" onclick="placeBet(1)">确认投注</button>
-    </div>
-
-    <!-- Match 2: Upcoming -->
-    <div class="match-card" style="opacity:.85">
-      <div class="match-status">
-        <div class="match-live" style="color:var(--blue)">
-          <div class="live-dot" style="background:var(--blue);animation:none"></div>即将开赛
-        </div>
-        <div class="match-timer">21:00 开球</div>
-      </div>
-      <div class="match-teams">
-        <div class="team">
-          <div class="team-flag">🇫🇷</div>
-          <div class="team-name">法国</div>
-        </div>
-        <div class="score-display">
-          <div class="score-num" style="color:var(--text-muted)">-</div>
-          <div class="score-sep">:</div>
-          <div class="score-num" style="color:var(--text-muted)">-</div>
-        </div>
-        <div class="team">
-          <div class="team-flag">🇩🇪</div>
-          <div class="team-name">德国</div>
-        </div>
-      </div>
-      <div class="bet-options" id="betOptions2">
-        <div class="bet-option" onclick="selectBet(2,'home',this)">
-          <div class="bet-label">法国胜</div>
-          <div class="bet-odds">2.1x</div>
-          <div class="bet-tickets">521票</div>
-        </div>
-        <div class="bet-option" onclick="selectBet(2,'draw',this)">
-          <div class="bet-label">平局</div>
-          <div class="bet-odds">3.5x</div>
-          <div class="bet-tickets">312票</div>
-        </div>
-        <div class="bet-option" onclick="selectBet(2,'away',this)">
-          <div class="bet-label">德国胜</div>
-          <div class="bet-odds">1.9x</div>
-          <div class="bet-tickets">487票</div>
-        </div>
-      </div>
-      <div class="pool-info">
-        <span>总票池：<strong>1,320 张</strong></span>
-        <span>余额：<strong style="color:var(--orange)">35 张</strong></span>
-      </div>
-      <div class="bet-input-row">
-        <label>投入竞猜券</label>
-        <input type="number" id="betAmount2" value="5" min="1" oninput="calcEstimate(2)">
-        <span class="unit">张</span>
-      </div>
-      <div class="bet-estimate">
-        <span>预计获得积分</span>
-        <strong id="estimate2">—</strong>
-      </div>
-      <button class="btn-bet" id="betBtn2" disabled>请先选择结果</button>
-    </div>
+<!-- SECTION 4: 竞猜记录 -->
+<section class="section-anchor" id="sec-history">
+  <div class="section-title"><span class="section-title-text">竞猜记录</span></div>
+  <div class="history-list" id="betHistoryTabList"></div>
+  <div class="notice" style="margin-top:14px">
+    单场如有多次投入，赔率可能不同，按单笔记录展示。投入积分不受赔率变动影响。
   </div>
 </section>
 
-<!-- ──────────────────────────────────────────── -->
-<!-- SECTION 3: 赛程                              -->
-<!-- ──────────────────────────────────────────── -->
-<section class="section-anchor" id="sec-schedule">
-  <div class="section-title">赛程</div>
-
-  <div class="date-group">
-    <div class="date-label">今天 · 6月5日 周五</div>
-    <div class="schedule-grid">
-      <div class="schedule-item">
-        <div class="schedule-time">19:00</div>
-        <div class="schedule-teams">
-          <div class="schedule-match">🇧🇷 巴西 <span style="color:var(--text-muted);font-size:11px">vs</span> 阿根廷 🇦🇷</div>
-          <div class="schedule-group">A组 · 第1轮</div>
-        </div>
-        <div class="schedule-right">
-          <span class="status-badge status-live">进行中</span>
-          <span class="schedule-score">2 - 1</span>
-          <span class="my-pick pick-win">已猜: 巴西胜 ✓</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">21:00</div>
-        <div class="schedule-teams">
-          <div class="schedule-match">🇫🇷 法国 <span style="color:var(--text-muted);font-size:11px">vs</span> 德国 🇩🇪</div>
-          <div class="schedule-group">B组 · 第1轮</div>
-        </div>
-        <div class="schedule-right">
-          <span class="status-badge status-upcoming">待开赛</span>
-          <span class="my-pick pick-pending">已猜: 法国胜</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">明天 · 6月6日 周六</div>
-    <div class="schedule-grid">
-      <div class="schedule-item">
-        <div class="schedule-time">18:00</div>
-        <div class="schedule-teams">
-          <div class="schedule-match">🇪🇸 西班牙 <span style="color:var(--text-muted);font-size:11px">vs</span> 葡萄牙 🇵🇹</div>
-          <div class="schedule-group">C组 · 第1轮</div>
-        </div>
-        <div class="schedule-right">
-          <span class="status-badge status-upcoming">待开赛</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">20:00</div>
-        <div class="schedule-teams">
-          <div class="schedule-match">🇯🇵 日本 <span style="color:var(--text-muted);font-size:11px">vs</span> 韩国 🇰🇷</div>
-          <div class="schedule-group">D组 · 第1轮</div>
-        </div>
-        <div class="schedule-right">
-          <span class="status-badge status-upcoming">待开赛</span>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">22:00</div>
-        <div class="schedule-teams">
-          <div class="schedule-match">🇺🇸 美国 <span style="color:var(--text-muted);font-size:11px">vs</span> 墨西哥 🇲🇽</div>
-          <div class="schedule-group">E组 · 第1轮</div>
-        </div>
-        <div class="schedule-right">
-          <span class="status-badge status-upcoming">待开赛</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">昨天 · 6月4日 周四</div>
-    <div class="schedule-grid">
-      <div class="schedule-item">
-        <div class="schedule-time">20:00</div>
-        <div class="schedule-teams">
-          <div class="schedule-match">🇮🇹 意大利 <span style="color:var(--text-muted);font-size:11px">vs</span> 英格兰 🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
-          <div class="schedule-group">F组 · 第1轮</div>
-        </div>
-        <div class="schedule-right">
-          <span class="status-badge status-done">已结束</span>
-          <span class="schedule-score" style="font-size:14px">1 - 2</span>
-          <span class="my-pick" style="background:#F0444E12;color:var(--red);font-size:9px;padding:1px 6px;border-radius:3px">猜错 −10券</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ──────────────────────────────────────────── -->
-<!-- SECTION 4: 兑换奖品                          -->
-<!-- ──────────────────────────────────────────── -->
+<!-- SECTION 5: 兑换奖品 -->
 <section class="section-anchor" id="sec-redeem">
-  <div class="section-title">兑换奖品</div>
+  <div class="section-title"><span class="section-title-text">我的积分</span></div>
 
   <div class="balance-bar">
-    <div class="balance-chip">
-      <div class="blabel">可用积分</div>
-      <div class="bvalue" style="color:#FFB347">1,286</div>
-    </div>
-    <div class="balance-chip">
-      <div class="blabel">竞猜券余额</div>
-      <div class="bvalue orange">35</div>
+    <div class="balance-chip" style="cursor:pointer" onclick="openModal('modal-points')">
+      <div class="blabel">可用积分 <span style="color:var(--orange-light);font-size:10px;margin-left:4px">查看流水 ›</span></div>
+      <div class="bvalue gold">1,286</div>
     </div>
   </div>
 
+  <div class="section-title"><span class="section-title-text">兑换奖品</span></div>
   <div class="redeem-grid">
-    <!-- 积分1:1换U -->
+
     <div class="redeem-card">
       <div class="redeem-type">
-        <div class="redeem-icon icon-orange">💰</div>
+        <div class="redeem-icon icon-gold"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span></div>
         <div class="redeem-meta">
-          <div class="redeem-title">积分 1:1 换 USDT</div>
-          <div class="redeem-rate">兑换比例 <strong>1 积分 = 1 USDT</strong>，不限量</div>
+          <div class="redeem-title">积分兑换黄金</div>
+          <div class="redeem-rate">兑换所需积分 <strong style="color:var(--amber)">1,000 积分</strong></div>
         </div>
       </div>
       <div class="redeem-footer">
         <div>
-          <div style="font-size:13px;font-weight:600">最多可换 <span style="color:#FFB347">1,286 USDT</span></div>
+          <div style="font-size:13px;font-weight:600">可兑换 <span style="color:var(--amber)">1g 黄金</span></div>
           <div class="redeem-limit">活动结束后 7 天内有效</div>
         </div>
-        <button class="btn-redeem btn-redeem-orange" onclick="showToast('积分换U 确认弹窗')">立即兑换</button>
+        <button class="btn-redeem btn-redeem-gold" onclick="showToast('积分换黄金 —— 确认后寄出')">立即兑换</button>
       </div>
     </div>
 
-    <!-- 竞猜券3:1换U限量 -->
     <div class="redeem-card">
-      <div style="position:absolute;top:10px;right:14px">
-        <span style="font-size:9px;background:#F0444E15;color:var(--red);border:1px solid #F0444E30;border-radius:3px;padding:2px 6px;font-weight:700">限量剩余 3,240/5,000</span>
-      </div>
-      <div class="redeem-type" style="margin-top:4px">
-        <div class="redeem-icon icon-gold">🎯</div>
+      <div class="redeem-type">
+        <div class="redeem-icon icon-gold"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></span></div>
         <div class="redeem-meta">
-          <div class="redeem-title">竞猜券 3:1 换 USDT</div>
-          <div class="redeem-rate">兑换比例 <strong>3 券 = 1 USDT</strong>，限量供应</div>
+          <div class="redeem-title">积分兑换发财金</div>
+          <div class="redeem-rate">兑换所需积分 <strong style="color:var(--amber)">500 积分</strong></div>
         </div>
       </div>
       <div class="redeem-footer">
         <div>
-          <div style="font-size:13px;font-weight:600">最多可换 <span style="color:#FFB347">11 USDT</span></div>
-          <div class="redeem-limit">剩余限额 <strong>1,760 USDT</strong></div>
+          <div style="font-size:13px;font-weight:600">可兑换 <span style="color:var(--amber)">10 USDT 发财金</span></div>
+          <div class="redeem-limit">活动结束后 7 天内有效</div>
         </div>
-        <button class="btn-redeem btn-redeem-gold" onclick="showToast('竞猜券换U 确认弹窗')">立即兑换</button>
+        <button class="btn-redeem btn-redeem-gold" onclick="showToast('积分换发财金 —— 确认后到账')">立即兑换</button>
       </div>
     </div>
-  </div>
 
-  <!-- 周边 -->
-  <div class="card" style="margin-top:12px">
-    <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text-dim)">周边商品</div>
-    <div class="merch-grid">
-      <div class="merch-item">
-        <div class="merch-emoji">👕</div>
-        <div class="merch-name">纪念T恤</div>
-        <div class="merch-price">2,000 积分</div>
-        <button class="btn-redeem btn-redeem-purple" style="width:100%;font-size:11px" onclick="showToast('T恤兑换')">兑换</button>
+    <div class="redeem-card">
+      <div class="redeem-type">
+        <div class="redeem-icon icon-orange"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2 12 3.5 8 2 3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span></div>
+        <div class="redeem-meta">
+          <div class="redeem-title">世界杯纪念T恤</div>
+          <div class="redeem-rate">兑换所需积分 <strong style="color:var(--amber)">2,000 积分</strong></div>
+        </div>
       </div>
-      <div class="merch-item">
-        <div class="merch-emoji">⚽</div>
-        <div class="merch-name">签名足球</div>
-        <div class="merch-price">5,000 积分</div>
-        <button class="btn-redeem btn-redeem-purple" style="width:100%;font-size:11px" onclick="showToast('签名球兑换')">兑换</button>
-      </div>
-      <div class="merch-item">
-        <div class="merch-emoji">🧢</div>
-        <div class="merch-name">限定球帽</div>
-        <div class="merch-price">1,500 积分</div>
-        <button class="btn-redeem btn-redeem-purple" style="width:100%;font-size:11px" onclick="showToast('球帽兑换')">兑换</button>
-      </div>
-      <div class="merch-item">
-        <div class="merch-emoji">🏆</div>
-        <div class="merch-name">发财金 10U</div>
-        <div class="merch-price">500 积分</div>
-        <button class="btn-redeem btn-redeem-purple" style="width:100%;font-size:11px" onclick="showToast('发财金兑换')">兑换</button>
+      <div class="redeem-footer">
+        <div>
+          <div style="font-size:13px;font-weight:600">官方限定周边</div>
+          <div class="redeem-limit">活动结束后 7 天内有效</div>
+        </div>
+        <button class="btn-redeem btn-redeem-orange" onclick="showToast('T恤兑换 —— 确认后邮寄')">立即兑换</button>
       </div>
     </div>
-    <div class="notice" style="margin-top:14px">
-      <strong>📌 兑换规则</strong><br>
-      活动结束后 7 天内（截至 7月27日）可兑换。积分到期失效，竞猜券限额兑换先到先得。
+
+    <div class="redeem-card">
+      <div class="redeem-type">
+        <div class="redeem-icon icon-purple"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10"/><path d="M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10"/><path d="M2 12h20"/></svg></span></div>
+        <div class="redeem-meta">
+          <div class="redeem-title">球星签名足球</div>
+          <div class="redeem-rate">兑换所需积分 <strong style="color:var(--amber)">5,000 积分</strong></div>
+        </div>
+      </div>
+      <div class="redeem-footer">
+        <div>
+          <div style="font-size:13px;font-weight:600">限量珍藏版</div>
+          <div class="redeem-limit">活动结束后 7 天内有效</div>
+        </div>
+        <button class="btn-redeem btn-redeem-purple" onclick="showToast('签名足球兑换 —— 确认后邮寄')">立即兑换</button>
+      </div>
     </div>
+
+    <div class="redeem-card">
+      <div class="redeem-type">
+        <div class="redeem-icon icon-orange"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12a5 5 0 0 1 5-5c3 0 4 2 5 2s2-2 5-2a5 5 0 0 1 5 5c0 6-7 8-10 13C9 20 2 18 2 12z"/></svg></span></div>
+        <div class="redeem-meta">
+          <div class="redeem-title">世界杯限定球帽</div>
+          <div class="redeem-rate">兑换所需积分 <strong style="color:var(--amber)">1,500 积分</strong></div>
+        </div>
+      </div>
+      <div class="redeem-footer">
+        <div>
+          <div style="font-size:13px;font-weight:600">官方限定周边</div>
+          <div class="redeem-limit">活动结束后 7 天内有效</div>
+        </div>
+        <button class="btn-redeem btn-redeem-orange" onclick="showToast('球帽兑换 —— 确认后邮寄')">立即兑换</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="notice" style="margin-top:4px">
+    <strong>兑换规则</strong><br>
+    活动结束后 7 天内（截至 7月27日）可兑换。积分到期自动失效，请及时兑换。
   </div>
 </section>
 
-</div><!-- end page-content -->
+</div>
 <div class="safe-area"></div>
 
-<!-- ═══ TOAST ══════════════════════════════════ -->
+<!-- ═══ MODAL: 积分流水 ═════════════════════ -->
+<div class="modal-overlay" id="overlay-modal-points" onclick="closeModal('modal-points')"></div>
+<div class="modal-sheet" id="modal-points">
+  <div class="modal-handle"></div>
+  <div class="modal-header">
+    <h3>积分流水</h3>
+    <button class="modal-close" onclick="closeModal('modal-points')">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="history-list" id="pointsHistoryList"></div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: 投注记录 ═════════════════════ -->
+<div class="modal-overlay" id="overlay-modal-bets" onclick="closeModal('modal-bets')"></div>
+<div class="modal-sheet" id="modal-bets">
+  <div class="modal-handle"></div>
+  <div class="modal-header">
+    <h3>投注记录</h3>
+    <button class="modal-close" onclick="closeModal('modal-bets')">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="history-list" id="betHistoryList"></div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: 购买积分 ══════════════════ -->
+<div class="modal-overlay" id="overlay-modal-buypts" onclick="closeModal('modal-buypts')"></div>
+<div class="modal-sheet" id="modal-buypts">
+  <div class="modal-handle"></div>
+  <div class="modal-header">
+    <h3>购买积分</h3>
+    <button class="modal-close" onclick="closeModal('modal-buypts')">×</button>
+  </div>
+  <div class="modal-body">
+    <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;line-height:1.8">
+      购买积分后<strong style="color:var(--text)">立即到账</strong>，可用于投入赛事竞猜或活动结束后兑换奖品。
+    </div>
+    <div class="buy-pts-grid" id="modalBuyPtsGrid"></div>
+    <button class="btn-buy-pts" onclick="buyPoints()">确认购买</button>
+    <div class="revive-note">价格最终以实际页面为准 · 购买后积分立即到账</div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: 竞猜确认 ════════════════════ -->
+<div class="modal-overlay" id="overlay-modal-confirm" onclick="closeModal('modal-confirm')"></div>
+<div class="modal-sheet" id="modal-confirm">
+  <div class="modal-handle"></div>
+  <div class="modal-header">
+    <h3>确认投入</h3>
+    <button class="modal-close" onclick="closeModal('modal-confirm')">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="confirm-summary">
+      <div class="confirm-row"><span class="confirm-label">赛事</span><span class="confirm-value" id="confirm-match">—</span></div>
+      <div class="confirm-row"><span class="confirm-label">类型</span><span class="confirm-value" id="confirm-type">—</span></div>
+      <div class="confirm-row"><span class="confirm-label">竞猜方向</span><span class="confirm-value orange" id="confirm-pick">—</span></div>
+      <div class="confirm-row"><span class="confirm-label">当前赔率</span><span class="confirm-value gold" id="confirm-odds">—</span></div>
+      <div class="confirm-row"><span class="confirm-label">投入积分</span><span class="confirm-value gold" id="confirm-pts">—</span></div>
+    </div>
+    <div class="confirm-warn" id="confirm-warn">
+      积分不足时将无法完成投注，请确认余额后继续。
+    </div>
+    <div class="confirm-actions">
+      <button class="btn-confirm-cancel" onclick="closeModal('modal-confirm')">取消</button>
+      <button class="btn-confirm-go" onclick="confirmBet()">确认投入</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ══════════════════════════════ -->
 <div id="toast"></div>
 
 <script>
-// ─── State ───────────────────────────────────
+// ─── State ────────────────────────────────
 const state = {
   signed: false,
-  claimed: false,
-  bets: { 1: { choice: 'home', amount: 10 }, 2: { choice: null, amount: 5 } },
-  pool: {
-    1: { home: 1240, draw: 683, away: 954 },
-    2: { home: 521,  draw: 312, away: 487 }
-  }
+  points: 1286,
+  dailyClaimed: false,
+  selectedBuyTier: 1,
+  pendingBet: null,
+  matchBets: {},
+  championBet: null,
+  pointsHistory: [
+    { time: '06-05 20:30', type: '竞猜赢取', amount: +180 },
+    { time: '06-05 09:00', type: '每日领取', amount: +200 },
+    { time: '06-04 15:20', type: '兑换消耗', amount: -500 },
+    { time: '06-04 09:00', type: '每日领取', amount: +200 },
+    { time: '06-03 22:10', type: '竞猜赢取', amount: +320 },
+    { time: '06-03 09:00', type: '购买积分', amount: +500 }
+  ],
+  betHistory: [
+    { match: '巴西 vs 阿根廷', type: '输赢平', pick: '巴西胜', odds: '1.8x', points: 100, status: 'win' },
+    { match: '法国 vs 德国', type: '输赢平', pick: '法国胜', odds: '2.1x', points: 150, status: 'pending' },
+    { match: '意大利 vs 英格兰', type: '比分', pick: '1-2', odds: '8.5x', points: 50, status: 'lose' },
+    { match: '西班牙 vs 葡萄牙', type: '让球', pick: '西班牙赢(-1.5)', odds: '2.0x', points: 200, status: 'pending' }
+  ]
 };
 
-// ─── Countdown ───────────────────────────────
+const buyPtsTiers = [
+  { pts: 100,   price: '10 USDT' },
+  { pts: 500,   price: '50 USDT', hot: true },
+  { pts: 1500,  price: '150 USDT' }
+];
+
+const betTypeNames = { winloss: '输赢竞猜', handicap: '让球玩法', score: '比分玩法' };
+
+// ─── Matches Data（当前日期：6月20日，第1轮全结束，第2轮进行/结束，第3轮待开始）─────
+const matches = [
+  // ── 6月18日 已结束 ──
+  {
+    id: 'm101', date: '06-18', dateLabel: '6月18日 周四',
+    time: '03:00', group: 'A组 · 第2轮', status: 'done',
+    home: { name: '墨西哥', flag: '🇲🇽' }, away: { name: '厄瓜多尔', flag: '🇪🇨' },
+    score: { home: 2, away: 1 },
+    odds: { winloss: { home: 2.1, draw: 3.2, away: 3.0 }, handicap: { line: '墨西哥 -0.5', home: 2.0, away: 1.9 }, score: { '2-1': 6.5, '1-0': 5.2, '1-1': 4.0, '2-0': 7.8, '0-1': 6.0, other: 3.2 } }
+  },
+  {
+    id: 'm102', date: '06-18', dateLabel: '6月18日 周四',
+    time: '06:00', group: 'A组 · 第2轮', status: 'done',
+    home: { name: '美国', flag: '🇺🇸' }, away: { name: '加拿大', flag: '🇨🇦' },
+    score: { home: 0, away: 1 },
+    odds: { winloss: { home: 1.9, draw: 3.3, away: 3.5 }, handicap: { line: '美国 -0.5', home: 1.9, away: 2.0 }, score: { '1-0': 5.0, '0-1': 5.8, '1-1': 3.9, '2-0': 6.5, '0-2': 8.2, other: 3.4 } },
+    myPick: { type: 'winloss', label: '美国胜', status: 'lose' }
+  },
+  {
+    id: 'm103', date: '06-18', dateLabel: '6月18日 周四',
+    time: '09:00', group: 'B组 · 第2轮', status: 'done',
+    home: { name: '阿根廷', flag: '🇦🇷' }, away: { name: '智利', flag: '🇨🇱' },
+    score: { home: 3, away: 0 },
+    odds: { winloss: { home: 1.4, draw: 4.5, away: 7.0 }, handicap: { line: '阿根廷 -1.5', home: 1.8, away: 2.1 }, score: { '2-0': 6.2, '3-0': 7.5, '1-0': 4.8, '2-1': 6.8, '3-1': 9.0, other: 3.0 } },
+    myPick: { type: 'winloss', label: '阿根廷胜', status: 'win' }
+  },
+  {
+    id: 'm104', date: '06-18', dateLabel: '6月18日 周四',
+    time: '12:00', group: 'B组 · 第2轮', status: 'done',
+    home: { name: '巴西', flag: '🇧🇷' }, away: { name: '秘鲁', flag: '🇵🇪' },
+    score: { home: 4, away: 1 },
+    odds: { winloss: { home: 1.3, draw: 5.0, away: 8.5 }, handicap: { line: '巴西 -2.5', home: 1.9, away: 1.9 }, score: { '3-0': 7.0, '2-0': 5.5, '4-1': 10.0, '2-1': 6.5, '3-1': 8.0, other: 2.8 } }
+  },
+  // ── 6月19日 已结束 ──
+  {
+    id: 'm105', date: '06-19', dateLabel: '6月19日 周五',
+    time: '03:00', group: 'C组 · 第2轮', status: 'done',
+    home: { name: '西班牙', flag: '🇪🇸' }, away: { name: '摩洛哥', flag: '🇲🇦' },
+    score: { home: 2, away: 0 },
+    odds: { winloss: { home: 1.5, draw: 4.0, away: 5.5 }, handicap: { line: '西班牙 -1.5', home: 1.9, away: 2.0 }, score: { '2-0': 5.8, '1-0': 4.5, '2-1': 6.5, '3-0': 8.0, '1-1': 5.2, other: 3.0 } }
+  },
+  {
+    id: 'm106', date: '06-19', dateLabel: '6月19日 周五',
+    time: '06:00', group: 'C组 · 第2轮', status: 'done',
+    home: { name: '德国', flag: '🇩🇪' }, away: { name: '乌拉圭', flag: '🇺🇾' },
+    score: { home: 1, away: 1 },
+    odds: { winloss: { home: 1.7, draw: 3.5, away: 4.2 }, handicap: { line: '德国 -0.5', home: 1.9, away: 2.0 }, score: { '1-0': 5.0, '2-0': 6.8, '1-1': 4.2, '2-1': 6.5, '0-1': 6.0, other: 3.2 } },
+    myPick: { type: 'score', label: '1-1', status: 'win' }
+  },
+  {
+    id: 'm107', date: '06-19', dateLabel: '6月19日 周五',
+    time: '09:00', group: 'D组 · 第2轮', status: 'done',
+    home: { name: '法国', flag: '🇫🇷' }, away: { name: '塞内加尔', flag: '🇸🇳' },
+    score: { home: 2, away: 0 },
+    odds: { winloss: { home: 1.4, draw: 4.5, away: 6.5 }, handicap: { line: '法国 -1.5', home: 1.9, away: 2.0 }, score: { '2-0': 5.5, '1-0': 4.5, '2-1': 6.5, '3-0': 8.5, '3-1': 9.5, other: 3.0 } }
+  },
+  {
+    id: 'm108', date: '06-19', dateLabel: '6月19日 周五',
+    time: '12:00', group: 'D组 · 第2轮', status: 'done',
+    home: { name: '英格兰', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' }, away: { name: '瑞士', flag: '🇨🇭' },
+    score: { home: 1, away: 0 },
+    odds: { winloss: { home: 1.7, draw: 3.5, away: 4.5 }, handicap: { line: '英格兰 -0.5', home: 1.9, away: 2.0 }, score: { '1-0': 5.2, '2-0': 7.0, '1-1': 4.0, '2-1': 6.8, '0-1': 6.5, other: 3.2 } }
+  },
+  // ── 6月20日 进行中 ──
+  {
+    id: 'm109', date: '06-20', dateLabel: '今天 · 6月20日 周六',
+    time: '03:00', group: 'E组 · 第2轮', status: 'live', elapsed: "58'",
+    home: { name: '日本', flag: '🇯🇵' }, away: { name: '印尼', flag: '🇮🇩' },
+    score: { home: 2, away: 0 },
+    odds: { winloss: { home: 1.4, draw: 5.0, away: 8.0 }, handicap: { line: '日本 -1.5', home: 1.9, away: 2.0 }, score: { '2-0': 6.0, '1-0': 4.8, '3-0': 8.0, '2-1': 7.0, '3-1': 9.5, other: 3.0 } },
+    myPick: { type: 'winloss', label: '日本胜', status: 'pending' }
+  },
+  {
+    id: 'm110', date: '06-20', dateLabel: '今天 · 6月20日 周六',
+    time: '06:00', group: 'E组 · 第2轮', status: 'live', elapsed: "31'",
+    home: { name: '澳大利亚', flag: '🇦🇺' }, away: { name: '韩国', flag: '🇰🇷' },
+    score: { home: 0, away: 1 },
+    odds: { winloss: { home: 2.2, draw: 3.2, away: 2.8 }, handicap: { line: '平手', home: 2.0, away: 1.9 }, score: { '1-1': 4.5, '0-1': 5.5, '1-0': 5.0, '2-1': 7.0, '0-2': 7.5, other: 3.2 } }
+  },
+  {
+    id: 'm111', date: '06-20', dateLabel: '今天 · 6月20日 周六',
+    time: '09:00', group: 'F组 · 第2轮', status: 'live', elapsed: "12'",
+    home: { name: '葡萄牙', flag: '🇵🇹' }, away: { name: '土耳其', flag: '🇹🇷' },
+    score: { home: 1, away: 0 },
+    odds: { winloss: { home: 1.6, draw: 3.8, away: 4.8 }, handicap: { line: '葡萄牙 -1.5', home: 2.0, away: 1.9 }, score: { '2-0': 5.5, '1-0': 4.8, '2-1': 6.8, '3-0': 8.5, '1-1': 5.0, other: 3.0 } }
+  },
+  // ── 6月20日 待开始 ──
+  {
+    id: 'm112', date: '06-20', dateLabel: '今天 · 6月20日 周六',
+    time: '12:00', group: 'F组 · 第2轮', status: 'upcoming',
+    home: { name: '克罗地亚', flag: '🇭🇷' }, away: { name: '比利时', flag: '🇧🇪' },
+    odds: { winloss: { home: 2.5, draw: 3.1, away: 2.4 }, handicap: { line: '平手', home: 2.0, away: 1.9 }, score: { '1-1': 4.2, '1-0': 5.5, '0-1': 5.8, '2-1': 6.8, '1-2': 7.0, other: 3.2 } }
+  },
+  // ── 6月21日 待开始 ──
+  {
+    id: 'm113', date: '06-21', dateLabel: '明天 · 6月21日 周日',
+    time: '03:00', group: 'G组 · 第2轮', status: 'upcoming',
+    home: { name: '荷兰', flag: '🇳🇱' }, away: { name: '南非', flag: '🇿🇦' },
+    odds: { winloss: { home: 1.5, draw: 4.2, away: 6.0 }, handicap: { line: '荷兰 -1.5', home: 1.9, away: 2.0 }, score: { '2-0': 5.8, '1-0': 4.5, '2-1': 6.5, '3-0': 8.0, '1-1': 5.5, other: 3.0 } }
+  },
+  {
+    id: 'm114', date: '06-21', dateLabel: '明天 · 6月21日 周日',
+    time: '06:00', group: 'G组 · 第2轮', status: 'upcoming',
+    home: { name: '科特迪瓦', flag: '🇨🇮' }, away: { name: '奥地利', flag: '🇦🇹' },
+    odds: { winloss: { home: 2.6, draw: 3.0, away: 2.5 }, handicap: { line: '平手', home: 2.0, away: 1.9 }, score: { '1-0': 5.5, '0-1': 5.8, '1-1': 4.0, '2-1': 7.0, '1-2': 7.2, other: 3.3 } }
+  },
+  {
+    id: 'm115', date: '06-21', dateLabel: '明天 · 6月21日 周日',
+    time: '09:00', group: 'H组 · 第2轮', status: 'upcoming',
+    home: { name: '意大利', flag: '🇮🇹' }, away: { name: '厄瓜多尔', flag: '🇪🇨' },
+    odds: { winloss: { home: 1.8, draw: 3.4, away: 4.0 }, handicap: { line: '意大利 -0.5', home: 1.9, away: 2.0 }, score: { '2-0': 5.5, '1-0': 4.8, '2-1': 6.5, '3-0': 8.0, '1-1': 4.5, other: 3.0 } }
+  },
+  {
+    id: 'm116', date: '06-21', dateLabel: '明天 · 6月21日 周日',
+    time: '12:00', group: 'H组 · 第2轮', status: 'upcoming',
+    home: { name: '塞内加尔', flag: '🇸🇳' }, away: { name: '瑞典', flag: '🇸🇪' },
+    odds: { winloss: { home: 1.9, draw: 3.3, away: 3.8 }, handicap: { line: '塞内加尔 -0.5', home: 1.9, away: 2.0 }, score: { '1-0': 5.0, '2-0': 6.5, '1-1': 4.2, '2-1': 7.0, '0-1': 6.0, other: 3.2 } }
+  }
+];
+
+// ─── Champion Odds Data（基于 Polymarket 2026年6月20日赔率）─────
+const championOdds = [
+  { name: '法国',   flag: '🇫🇷', prob: 18, odds: 5.6  },
+  { name: '西班牙', flag: '🇪🇸', prob: 17, odds: 5.9  },
+  { name: '英格兰', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', prob: 11, odds: 9.1  },
+  { name: '葡萄牙', flag: '🇵🇹', prob: 11, odds: 9.3  },
+  { name: '巴西',   flag: '🇧🇷', prob: 9,  odds: 11.1 },
+  { name: '阿根廷', flag: '🇦🇷', prob: 8,  odds: 12.5 },
+  { name: '德国',   flag: '🇩🇪', prob: 5,  odds: 20.0 },
+  { name: '荷兰',   flag: '🇳🇱', prob: 3,  odds: 33.3 },
+  { name: '比利时', flag: '🇧🇪', prob: 2,  odds: 50.0 },
+  { name: '摩洛哥', flag: '🇲🇦', prob: 1,  odds: 100  },
+  { name: '美国',   flag: '🇺🇸', prob: 1,  odds: 100  },
+  { name: '日本',   flag: '🇯🇵', prob: 1,  odds: 100  },
+  { name: '克罗地亚',flag: '🇭🇷',prob: 1,  odds: 100  },
+  { name: '乌拉圭', flag: '🇺🇾', prob: 1,  odds: 100  },
+  { name: '墨西哥', flag: '🇲🇽', prob: 1,  odds: 100  },
+  { name: '瑞士',   flag: '🇨🇭', prob: 1,  odds: 100  },
+  { name: '土耳其', flag: '🇹🇷', prob: 1,  odds: 100  },
+];
+
+// ─── Countdown ────────────────────────────
 function updateCountdown() {
   const diff = new Date('2026-06-05T19:00:00+08:00') - new Date();
   if (diff <= 0) { ['cdDays','cdHours','cdMins'].forEach(id => document.getElementById(id).textContent = '00'); return; }
@@ -1541,97 +1378,514 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 30000);
 
-// ─── Tab scroll + IntersectionObserver ───────
-const TAB_BAR_H = 48;
-
-function scrollToSection(id, el) {
+// ─── Tab switching ───────────────────────
+function switchTab(id, el) {
+  document.querySelectorAll('.section-anchor').forEach(s => s.classList.remove('active'));
   const target = document.getElementById(id);
-  if (!target) return;
-  const top = target.getBoundingClientRect().top + window.scrollY - TAB_BAR_H - 8;
-  window.scrollTo({ top, behavior: 'smooth' });
-  setActiveTab(el);
-}
-
-function setActiveTab(el) {
+  if (target) target.classList.add('active');
   document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
+  if (el) el.classList.add('active');
+  if (id === 'sec-history') renderBetHistory(document.getElementById('betHistoryTabList'));
+  window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
-// IntersectionObserver: update active tab while scrolling
-const sectionMap = {
-  'sec-deposit':  0,
-  'sec-bet':      1,
-  'sec-schedule': 2,
-  'sec-redeem':   3
-};
+function scrollToSection(id, el) { switchTab(id, el); }
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const idx = sectionMap[entry.target.id];
-      if (idx !== undefined) {
-        const tabs = document.querySelectorAll('.tab-item');
-        tabs.forEach(t => t.classList.remove('active'));
-        tabs[idx].classList.add('active');
-      }
-    }
-  });
-}, { rootMargin: `-${TAB_BAR_H + 20}px 0px -60% 0px`, threshold: 0 });
-
-document.querySelectorAll('.section-anchor').forEach(s => observer.observe(s));
-
-// ─── Signup ──────────────────────────────────
+// ─── Signup ───────────────────────────────
 function handleSignup() {
   if (state.signed) return;
   state.signed = true;
   const btn = document.getElementById('signupBtn');
   btn.textContent = '✓ 已报名';
-  btn.style.background = 'linear-gradient(135deg,#2a1a00,#3a2000)';
+  btn.style.background = 'rgba(245,98,0,0.1)';
   btn.style.color = 'var(--orange-light)';
-  btn.style.boxShadow = 'none';
-  showToast('报名成功！您已加入世界杯竞猜活动 🎉');
+  btn.style.boxShadow = 'inset 0 0 0 1px rgba(245,98,0,0.3)';
+  showToast('报名成功！欢迎参加世界杯竞猜活动');
 }
 
-// ─── Bet ─────────────────────────────────────
-function selectBet(matchId, choice, el) {
-  document.getElementById('betOptions' + matchId).querySelectorAll('.bet-option').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  state.bets[matchId].choice = choice;
-  if (matchId === 2) { const btn = document.getElementById('betBtn2'); btn.disabled = false; btn.textContent = '确认投注'; }
-  calcEstimate(matchId);
-}
-
-function calcEstimate(matchId) {
-  const amount = parseInt(document.getElementById('betAmount' + matchId).value) || 0;
-  const { choice } = state.bets[matchId];
-  const pool = state.pool[matchId];
-  const total = pool.home + pool.draw + pool.away;
-  const mySlice = choice ? pool[choice] : 1;
-  const est = choice && mySlice > 0 ? Math.round((amount / (mySlice + amount)) * (total + amount)) : 0;
-  document.getElementById('estimate' + matchId).textContent = choice ? '≈ ' + est : '—';
-  state.bets[matchId].amount = amount;
-}
-
-function placeBet(matchId) {
-  const { choice, amount } = state.bets[matchId];
-  if (!choice) { showToast('请先选择竞猜结果'); return; }
-  if (!amount || amount < 1) { showToast('请输入有效的竞猜券数量'); return; }
-  state.pool[matchId][choice] += amount;
-  showToast(`投注成功！已投 ${amount} 张 · ${{ home:'主队胜', draw:'平局', away:'客队胜' }[choice]} ✓`);
-  calcEstimate(matchId);
-}
-
-// ─── Claim ───────────────────────────────────
-function claimTickets() {
-  if (state.claimed) return;
-  state.claimed = true;
+// ─── Daily Claim ──────────────────────────
+function claimPoints() {
+  if (state.dailyClaimed) return;
+  state.dailyClaimed = true;
+  state.points += 200;
   const btn = document.getElementById('claimBtn');
   btn.textContent = '已领取';
   btn.classList.add('claimed');
-  showToast('领取成功！+7 张竞猜券已到账 ⚡');
+  updatePointsDisplay();
+  showToast('领取成功！+200 积分已到账');
 }
 
-// ─── Toast ───────────────────────────────────
+function updatePointsDisplay() {
+  const v = state.points.toLocaleString();
+  const el1 = document.getElementById('pointsDisplay');
+  if (el1) el1.textContent = v;
+}
+
+// ─── Bet Sub-tabs ─────────────────────────
+let currentBetTab = 'group';
+
+function switchBetTab(tab, el) {
+  currentBetTab = tab;
+  document.querySelectorAll('.bet-sub-tab').forEach(t => t.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderMatches();
+}
+
+// ─── Match Group collapse state ───────────
+const groupOpenState = {};
+
+function toggleMatchGroup(key) {
+  groupOpenState[key] = !groupOpenState[key];
+  const body  = document.getElementById('mgb-' + key);
+  const arrow = document.getElementById('mga-' + key);
+  if (body)  body.classList.toggle('open', groupOpenState[key]);
+  if (arrow) arrow.classList.toggle('open', groupOpenState[key]);
+}
+
+function getMatchBet(matchId) {
+  if (!state.matchBets[matchId]) {
+    state.matchBets[matchId] = { betType: 'winloss', choice: null, label: null, odds: null, amount: 100 };
+  }
+  return state.matchBets[matchId];
+}
+
+function renderMatches() {
+  const root = document.getElementById('matchListRoot');
+  if (!root) return;
+
+  if (currentBetTab === 'knockout') {
+    root.innerHTML = '<div style="text-align:center;padding:40px 0;color:var(--text-muted);font-size:13px">淘汰赛竞猜即将开放</div>';
+    return;
+  }
+  if (currentBetTab === 'champion') {
+    renderChampion(root);
+    return;
+  }
+
+  // 小组赛：按状态分组 done / live / upcoming
+  const statusOrder = [
+    { key: 'live',     label: '进行中', dotColor: 'var(--red)',   defaultOpen: true  },
+    { key: 'upcoming', label: '待开始', dotColor: 'rgba(255,255,255,0.3)', defaultOpen: false },
+    { key: 'done',     label: '已结束', dotColor: 'var(--text-muted)',    defaultOpen: false },
+  ];
+
+  const buckets = { live: [], upcoming: [], done: [] };
+  matches.forEach(m => { if (buckets[m.status]) buckets[m.status].push(m); });
+
+  const html = statusOrder.map(sg => {
+    const list = buckets[sg.key];
+    if (list.length === 0) return '';
+
+    // init open state once
+    if (groupOpenState[sg.key] === undefined) groupOpenState[sg.key] = sg.defaultOpen;
+    const isOpen = groupOpenState[sg.key];
+
+    const statusDot = `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${sg.dotColor};${sg.key==='live'?'box-shadow:0 0 6px var(--red);animation:blink 1.2s ease-in-out infinite':''};flex-shrink:0"></span>`;
+
+    return `
+      <div class="match-status-group">
+        <div class="match-group-header" onclick="toggleMatchGroup('${sg.key}')">
+          <div class="match-group-title">
+            ${statusDot}
+            ${sg.label}
+            <span class="match-group-count">${list.length} 场</span>
+          </div>
+          <span class="match-group-arrow${isOpen ? ' open' : ''}" id="mga-${sg.key}">›</span>
+        </div>
+        <div class="match-group-body${isOpen ? ' open' : ''}" id="mgb-${sg.key}">
+          <div class="match-group-inner">
+            ${list.map(m => renderMatchCard(m)).join('')}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  root.innerHTML = html || '<div style="text-align:center;padding:40px 0;color:var(--text-muted);font-size:13px">暂无比赛</div>';
+}
+
+function renderChampion(root) {
+  const b = state.championBet || { choice: null, amount: 100 };
+  const rows = championOdds.map(t => {
+    const isSel = b.choice === t.name;
+    return `
+      <div class="champ-row${isSel ? ' selected' : ''}" onclick="selectChampion('${t.name}',${t.odds},this)">
+        <div class="champ-left">
+          <span class="champ-flag">${t.flag}</span>
+          <span class="champ-name">${t.name}</span>
+        </div>
+        <div class="champ-right">
+          <span class="champ-prob">${t.prob}%</span>
+          <span class="champ-odds">${t.odds}x</span>
+          <span class="champ-check${isSel ? ' visible' : ''}">✓</span>
+        </div>
+      </div>`;
+  }).join('');
+
+  const expandHtml = `
+    <div class="mc-expand${b.choice ? ' open' : ''}" id="champ-expand">
+      <div class="mc-expand-inner">
+        <div class="mc-input-row">
+          <label>投入积分</label>
+          <input type="number" id="champ-amt" value="${b.amount}" min="1" oninput="calcChampEst()">
+          <span class="unit">积分</span>
+        </div>
+        <div class="mc-confirm-row">
+          <div class="mc-estimate-inline">
+            <span>猜中可得</span>
+            <strong id="champ-est">${b.choice ? '≈ ' + Math.round(b.amount * (state.championBet?.odds||1)) : '—'}</strong>
+          </div>
+          <button class="mc-bet-btn-compact" onclick="openChampConfirm()">确认投入</button>
+        </div>
+      </div>
+    </div>`;
+
+  root.innerHTML = `
+    <div style="padding:14px 0 8px">
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;line-height:1.7">
+        选择你认为将夺得 2026 FIFA 世界杯冠军的球队，猜中即可按赔率获得积分奖励。赔率实时更新。
+      </div>
+      <div class="champ-list">${rows}</div>
+      ${expandHtml}
+    </div>`;
+}
+
+function selectChampion(name, odds, el) {
+  if (!state.championBet) state.championBet = { choice: null, amount: 100, odds: null };
+  state.championBet.choice = name;
+  state.championBet.odds = odds;
+  const amt = document.getElementById('champ-amt');
+  if (amt) state.championBet.amount = parseInt(amt.value) || 100;
+  // re-render
+  const root = document.getElementById('matchListRoot');
+  renderChampion(root);
+}
+
+function calcChampEst() {
+  if (!state.championBet) return;
+  const input = document.getElementById('champ-amt');
+  if (input) state.championBet.amount = parseInt(input.value) || 0;
+  const est = document.getElementById('champ-est');
+  if (est && state.championBet.choice && state.championBet.odds && state.championBet.amount > 0) {
+    est.textContent = '≈ ' + Math.round(state.championBet.amount * state.championBet.odds);
+  }
+}
+
+function openChampConfirm() {
+  const b = state.championBet;
+  if (!b || !b.choice) { showToast('请先选择一支球队'); return; }
+  const input = document.getElementById('champ-amt');
+  if (input) b.amount = parseInt(input.value) || 0;
+  if (!b.amount || b.amount < 1) { showToast('请输入有效积分数量'); return; }
+  state.pendingBet = { matchId: 'champion', b: { betType: 'champion', choice: b.choice, label: b.choice + ' 夺冠', odds: b.odds, amount: b.amount }, matchName: '2026 世界杯总冠军' };
+  document.getElementById('confirm-match').textContent = '2026 世界杯总冠军';
+  document.getElementById('confirm-type').textContent  = '总冠军竞猜';
+  document.getElementById('confirm-pick').textContent  = b.choice + ' 夺冠';
+  document.getElementById('confirm-odds').textContent  = b.odds + 'x';
+  document.getElementById('confirm-pts').textContent   = b.amount + ' 积分';
+  openModal('modal-confirm');
+}
+
+function renderMatchCard(m) {
+  const b = getMatchBet(m.id);
+  const isDone = m.status === 'done';
+  const isLive = m.status === 'live';
+  const isUpcoming = m.status === 'upcoming';
+
+  let statusHtml = '';
+  if (isLive) {
+    statusHtml = `<div class="mc-status mc-status-live"><div class="live-dot" style="background:var(--red)"></div>进行中 · ${m.elapsed}</div>`;
+  } else if (isUpcoming) {
+    statusHtml = `<div class="mc-status" style="color:rgba(255,255,255,0.5);font-weight:600;display:flex;align-items:center;gap:5px"><div class="live-dot" style="background:rgba(255,255,255,0.3);box-shadow:none;animation:none"></div>待开赛</div>`;
+  } else {
+    statusHtml = `<div class="mc-status" style="color:var(--text-muted)">已结束</div>`;
+  }
+
+  let scoreHtml = '';
+  if (isDone || isLive) {
+    scoreHtml = `<div class="mc-score">${m.score.home} - ${m.score.away}</div>`;
+  } else {
+    scoreHtml = `<div class="mc-score muted">vs</div>`;
+  }
+
+  const betSection = isDone ? renderDonePickBadge(m) : renderBetArea(m, b);
+  const pickBadge = m.myPick ? renderPickBadge(m.myPick, isDone) : '';
+
+  return `
+    <div class="mc${isLive ? ' mc-live' : ''}" id="mc-${m.id}">
+      <div class="mc-header">
+        ${statusHtml}
+        <div class="mc-meta">
+          <span class="mc-group">${m.group}</span>
+          <span class="mc-time">${m.time}</span>
+        </div>
+      </div>
+      <div class="mc-teams">
+        <div class="mc-team">
+          <span class="mc-flag">${m.home.flag}</span>
+          <span class="mc-name">${m.home.name}</span>
+        </div>
+        <div class="mc-score-area">${scoreHtml}</div>
+        <div class="mc-team away">
+          <span class="mc-flag">${m.away.flag}</span>
+          <span class="mc-name">${m.away.name}</span>
+        </div>
+      </div>
+      ${pickBadge}
+      ${betSection}
+    </div>
+  `;
+}
+
+function renderPickBadge(pick, isDone) {
+  const cls = pick.status === 'win' ? 'pick-win' : pick.status === 'lose' ? 'pick-lost' : 'pick-pending';
+  const icon = pick.status === 'win' ? ' ✓' : pick.status === 'lose' ? ' ✗' : '';
+  return `<div class="mc-my-pick"><span class="my-pick ${cls}">${pick.label}${icon}</span></div>`;
+}
+
+function renderDonePickBadge(m) {
+  return '';
+}
+
+function renderBetArea(m, b) {
+  if (m.status === 'done') return '';
+  const odds = m.odds[b.betType];
+  let oddsHtml = '';
+
+  if (b.betType === 'winloss') {
+    oddsHtml = `
+      <div class="mc-odds">
+        ${[['home', m.home.name + '胜', odds.home], ['draw', '平局', odds.draw], ['away', m.away.name + '胜', odds.away]]
+          .map(([key, label, odd]) => `
+            <div class="mc-odds-btn${b.choice === key ? ' selected' : ''}" onclick="selectMatchOdd('${m.id}','${key}','${label}',${odd},this)">
+              <div class="mc-odds-label">${label}</div>
+              <div class="mc-odds-val">${odd}x</div>
+            </div>
+          `).join('')}
+      </div>`;
+  } else if (b.betType === 'handicap') {
+    oddsHtml = `
+      <div style="font-size:10px;color:var(--amber);margin-bottom:6px;text-align:center">${odds.line}</div>
+      <div class="mc-odds">
+        ${[['home', m.home.name + '赢', odds.home], ['away', m.away.name + '赢', odds.away]]
+          .map(([key, label, odd]) => `
+            <div class="mc-odds-btn${b.choice === key ? ' selected' : ''}" onclick="selectMatchOdd('${m.id}','${key}','${label}',${odd},this)">
+              <div class="mc-odds-label">${label}</div>
+              <div class="mc-odds-val">${odd}x</div>
+            </div>
+          `).join('')}
+      </div>`;
+  } else {
+    const scoreEntries = Object.entries(m.odds.score);
+    oddsHtml = `
+      <div class="mc-score-grid">
+        ${scoreEntries.map(([s, odd]) => `
+          <div class="mc-score-btn${b.choice === s ? ' selected' : ''}" onclick="selectMatchScore('${m.id}','${s}',${odd},this)">
+            <div class="sv">${s === 'other' ? '其他' : s}</div>
+            <div class="so">${odd}x</div>
+          </div>
+        `).join('')}
+      </div>`;
+  }
+
+  const betTypeChips = `
+    <div class="mc-bet-types">
+      ${['winloss','handicap','score'].map(t => `
+        <div class="mc-bet-chip${b.betType === t ? ' active' : ''}" onclick="switchMatchBetType('${m.id}','${t}',this)">${betTypeNames[t]}</div>
+      `).join('')}
+    </div>`;
+
+  const expandId = `expand-${m.id}`;
+  const expandHtml = `
+    <div class="mc-expand${b.choice ? ' open' : ''}" id="${expandId}">
+      <div class="mc-expand-inner">
+        <div class="mc-input-row">
+          <label>投入积分</label>
+          <input type="number" id="amt-${m.id}" value="${b.amount}" min="1" oninput="calcMatchEst('${m.id}')">
+          <span class="unit">积分</span>
+        </div>
+        <div class="mc-confirm-row">
+          <div class="mc-estimate-inline">
+            <span>猜中可得</span>
+            <strong id="est-${m.id}">${b.choice && b.odds ? '≈ ' + Math.round(b.amount * b.odds) : '—'}</strong>
+          </div>
+          <button class="mc-bet-btn-compact" onclick="openMatchConfirm('${m.id}')">确认投入</button>
+        </div>
+      </div>
+    </div>`;
+
+  return `<div class="mc-bet">${betTypeChips}${oddsHtml}${expandHtml}</div>`;
+}
+
+function switchMatchBetType(matchId, type, el) {
+  const b = getMatchBet(matchId);
+  b.betType = type;
+  b.choice = null; b.label = null; b.odds = null;
+  reRenderCard(matchId);
+}
+
+function selectMatchOdd(matchId, key, label, odd, el) {
+  const b = getMatchBet(matchId);
+  b.choice = key; b.label = label; b.odds = odd;
+  el.closest('.mc-odds').querySelectorAll('.mc-odds-btn').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const expand = document.getElementById('expand-' + matchId);
+  if (expand) expand.classList.add('open');
+  calcMatchEst(matchId);
+}
+
+function selectMatchScore(matchId, score, odd, el) {
+  const b = getMatchBet(matchId);
+  b.choice = score; b.label = score === 'other' ? '其他比分' : score; b.odds = odd;
+  el.closest('.mc-score-grid').querySelectorAll('.mc-score-btn').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const expand = document.getElementById('expand-' + matchId);
+  if (expand) expand.classList.add('open');
+  calcMatchEst(matchId);
+}
+
+function calcMatchEst(matchId) {
+  const b = getMatchBet(matchId);
+  const input = document.getElementById('amt-' + matchId);
+  if (input) b.amount = parseInt(input.value) || 0;
+  const est = document.getElementById('est-' + matchId);
+  if (est) est.textContent = (b.choice && b.odds && b.amount > 0) ? '≈ ' + Math.round(b.amount * b.odds) : '—';
+}
+
+function reRenderCard(matchId) {
+  const m = matches.find(x => x.id === matchId);
+  const card = document.getElementById('mc-' + matchId);
+  if (!m || !card) return;
+  const newHtml = renderMatchCard(m);
+  const tmp = document.createElement('div');
+  tmp.innerHTML = newHtml;
+  card.replaceWith(tmp.firstElementChild);
+}
+
+function openMatchConfirm(matchId) {
+  const b = getMatchBet(matchId);
+  const m = matches.find(x => x.id === matchId);
+  if (!b.choice) { showToast('请先选择竞猜结果'); return; }
+  const input = document.getElementById('amt-' + matchId);
+  if (input) b.amount = parseInt(input.value) || 0;
+  if (!b.amount || b.amount < 1) { showToast('请输入有效积分数量'); return; }
+  state.pendingBet = { matchId, b, matchName: m.home.name + ' vs ' + m.away.name };
+  document.getElementById('confirm-match').textContent  = state.pendingBet.matchName;
+  document.getElementById('confirm-type').textContent   = betTypeNames[b.betType];
+  document.getElementById('confirm-pick').textContent   = b.label;
+  document.getElementById('confirm-odds').textContent   = b.odds + 'x';
+  document.getElementById('confirm-pts').textContent    = b.amount + ' 积分';
+  openModal('modal-confirm');
+}
+
+// ─── Confirm Modal ────────────────────────
+function openConfirmModal() {}
+
+function confirmBet() {
+  if (!state.pendingBet) return;
+  const { b, matchName } = state.pendingBet;
+  state.points -= b.amount;
+  updatePointsDisplay();
+  closeModal('modal-confirm');
+  showToast(`投入成功！${b.label} · ${b.amount} 积分 ✓`);
+  b.choice = null; b.label = null; b.odds = null;
+  state.pendingBet = null;
+}
+
+// ─── Buy Points Modal ─────────────────────
+function buildBuyPtsGrid(gridId) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  grid.innerHTML = '';
+  buyPtsTiers.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'buy-pts-card' + (i === state.selectedBuyTier ? ' selected' : '') + (t.hot ? ' hot' : '');
+    card.innerHTML = `
+      <div class="buy-pts-amount">${t.pts}</div>
+      <div class="buy-pts-label">积分</div>
+      <div class="buy-pts-price">${t.price}</div>
+    `;
+    card.onclick = () => {
+      state.selectedBuyTier = i;
+      document.querySelectorAll('.buy-pts-card').forEach((c, j) => c.classList.toggle('selected', j === i));
+    };
+    grid.appendChild(card);
+  });
+}
+
+function buyPoints() {
+  const tier = buyPtsTiers[state.selectedBuyTier];
+  state.points += tier.pts;
+  updatePointsDisplay();
+  closeModal('modal-buypts');
+  showToast(`购买成功！+${tier.pts} 积分已到账`);
+}
+
+function confirmBuyPoints() {
+  const tier = buyPtsTiers[state.selectedBuyTier];
+  state.points += tier.pts;
+  updatePointsDisplay();
+  showToast(`购买成功！+${tier.pts} 积分已到账`);
+}
+
+// ─── Points History Modal ─────────────────
+function buildPointsHistory() {
+  const list = document.getElementById('pointsHistoryList');
+  list.innerHTML = state.pointsHistory.map(h => `
+    <div class="history-item">
+      <div class="history-left">
+        <div class="history-type">${h.type}</div>
+        <div class="history-time">${h.time}</div>
+      </div>
+      <div class="history-amount ${h.amount > 0 ? 'pos' : 'neg'}">${h.amount > 0 ? '+' : ''}${h.amount}</div>
+    </div>
+  `).join('');
+}
+
+// ─── Bet History (shared renderer) ───────
+function renderBetHistory(listEl) {
+  if (!listEl) return;
+  const statusMap = { win: ['赢', 'win'], lose: ['输', 'lose'], pending: ['待结算', 'pending'] };
+  listEl.innerHTML = state.betHistory.map(b => {
+    const [label, cls] = statusMap[b.status];
+    return `
+      <div class="bet-history-item">
+        <div class="bet-history-top">
+          <span class="bet-history-match">${b.match}</span>
+          <span class="bet-status bet-status-${cls}">${label}</span>
+        </div>
+        <div class="bet-history-detail">
+          <span>${b.type}</span>
+          <span>竞猜：${b.pick}</span>
+          <span>赔率：${b.odds}</span>
+          <span style="color:var(--amber)">${b.points} 积分</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function buildBetHistory() {
+  renderBetHistory(document.getElementById('betHistoryList'));
+}
+
+// ─── Modal open / close ───────────────────
+function openModal(id) {
+  if (id === 'modal-points')  buildPointsHistory();
+  if (id === 'modal-bets')    buildBetHistory();
+  if (id === 'modal-buypts')  buildBuyPtsGrid('modalBuyPtsGrid');
+
+  document.getElementById('overlay-' + id).classList.add('open');
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById('overlay-' + id).classList.remove('open');
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── Toast ────────────────────────────────
 let toastTimer;
 function showToast(msg) {
   const el = document.getElementById('toast');
@@ -1645,19 +1899,19 @@ function showToast(msg) {
   }, 2200);
 }
 
-// ─── Tier Track ──────────────────────────────
+// ─── Tier Track ───────────────────────────
 (function buildTierTrack() {
   const tiers = [
-    { amount: '100',   tickets: 1 },
-    { amount: '1,000', tickets: 2 },
-    { amount: '5,000', tickets: 4 },
-    { amount: '1万',   tickets: 7 },
-    { amount: '5万',   tickets: 13 },
-    { amount: '10万',  tickets: 38 },
-    { amount: '25万',  tickets: 45 },
-    { amount: '50万',  tickets: 75 },
-    { amount: '100万', tickets: 150 },
-    { amount: '150万', tickets: 200 },
+    { amount: '100',   pts: 50 },
+    { amount: '1,000', pts: 100 },
+    { amount: '5,000', pts: 150 },
+    { amount: '1万',   pts: 200 },
+    { amount: '5万',   pts: 400 },
+    { amount: '10万',  pts: 800 },
+    { amount: '25万',  pts: 1200 },
+    { amount: '50万',  pts: 2000 },
+    { amount: '100万', pts: 4000 },
+    { amount: '150万', pts: 6000 },
   ];
   const currentIdx = 3;
   const CELL_W = 72;
@@ -1671,40 +1925,32 @@ function showToast(msg) {
     const isCurrent = i === currentIdx;
 
     const amCell = document.createElement('div');
-    amCell.className = 'tier-cell';
-    amCell.style.width = CELL_W + 'px';
+    amCell.className = 'tier-cell'; amCell.style.width = CELL_W + 'px';
     const lbl = document.createElement('div');
     lbl.className = 'tc-label' + (isCurrent ? ' tcurrent' : isActive ? ' active' : '');
     lbl.textContent = t.amount;
-    amCell.appendChild(lbl);
-    amountsRow.appendChild(amCell);
+    amCell.appendChild(lbl); amountsRow.appendChild(amCell);
 
     const dotCell = document.createElement('div');
-    dotCell.className = 'tier-cell';
-    dotCell.style.width = CELL_W + 'px';
-    dotCell.style.zIndex = '2';
+    dotCell.className = 'tier-cell'; dotCell.style.width = CELL_W + 'px'; dotCell.style.zIndex = '2';
     const dot = document.createElement('div');
     dot.className = 'tier-dot' + (isCurrent ? ' tdot-current' : isActive ? ' tdot-active' : '');
-    dotCell.appendChild(dot);
-    dotsRow.appendChild(dotCell);
+    dotCell.appendChild(dot); dotsRow.appendChild(dotCell);
 
     const bgCell = document.createElement('div');
-    bgCell.className = 'tier-cell';
-    bgCell.style.width = CELL_W + 'px';
-    bgCell.style.alignItems = 'flex-start';
-    bgCell.style.paddingTop = '2px';
+    bgCell.className = 'tier-cell'; bgCell.style.width = CELL_W + 'px';
+    bgCell.style.alignItems = 'flex-start'; bgCell.style.paddingTop = '2px';
     const badge = document.createElement('div');
     badge.className = 'tier-badge' + (isCurrent ? ' tbadge-current' : isActive ? ' tbadge-active' : '');
-    badge.innerHTML = '🎟 ' + t.tickets;
-    bgCell.appendChild(badge);
-    badgesRow.appendChild(bgCell);
+    badge.textContent = t.pts;
+    bgCell.appendChild(badge); badgesRow.appendChild(bgCell);
   });
 
-  const lineBg   = document.getElementById('tierLineBg');
+  const lineBg = document.getElementById('tierLineBg');
   const lineFill = document.getElementById('tierLineFill');
-  lineBg.style.left  = (CELL_W / 2) + 'px';
+  lineBg.style.left = (CELL_W / 2) + 'px';
   lineBg.style.right = (CELL_W / 2) + 'px';
-  lineFill.style.left  = (CELL_W / 2) + 'px';
+  lineFill.style.left = (CELL_W / 2) + 'px';
   lineFill.style.width = (currentIdx * CELL_W) + 'px';
 
   const wrap = document.getElementById('tierScrollWrap');
@@ -1713,8 +1959,64 @@ function showToast(msg) {
   });
 })();
 
-// ─── Init ────────────────────────────────────
-calcEstimate(1);
+// ─── Grid Tier Track ──────────────────────
+(function buildGridTierTrack() {
+  const tiers = [
+    { amount: '100',   pts: 50 },
+    { amount: '1,000', pts: 100 },
+    { amount: '5,000', pts: 150 },
+    { amount: '1万',   pts: 200 },
+    { amount: '5万',   pts: 400 },
+    { amount: '10万',  pts: 800 },
+    { amount: '25万',  pts: 1200 },
+    { amount: '50万',  pts: 2000 },
+    { amount: '100万', pts: 4000 },
+    { amount: '150万', pts: 6000 },
+  ];
+  const currentIdx = -1;
+  const CELL_W = 72;
+
+  const amountsRow = document.getElementById('gridTierAmounts');
+  const dotsRow    = document.getElementById('gridTierDots');
+  const badgesRow  = document.getElementById('gridTierBadges');
+
+  tiers.forEach((t, i) => {
+    const isActive  = i < currentIdx;
+    const isCurrent = i === currentIdx;
+
+    const amCell = document.createElement('div');
+    amCell.className = 'tier-cell'; amCell.style.width = CELL_W + 'px';
+    const lbl = document.createElement('div');
+    lbl.className = 'tc-label' + (isCurrent ? ' tcurrent' : isActive ? ' active' : '');
+    lbl.textContent = t.amount;
+    amCell.appendChild(lbl); amountsRow.appendChild(amCell);
+
+    const dotCell = document.createElement('div');
+    dotCell.className = 'tier-cell'; dotCell.style.width = CELL_W + 'px'; dotCell.style.zIndex = '2';
+    const dot = document.createElement('div');
+    dot.className = 'tier-dot' + (isCurrent ? ' tdot-current' : isActive ? ' tdot-active' : '');
+    dotCell.appendChild(dot); dotsRow.appendChild(dotCell);
+
+    const bgCell = document.createElement('div');
+    bgCell.className = 'tier-cell'; bgCell.style.width = CELL_W + 'px';
+    bgCell.style.alignItems = 'flex-start'; bgCell.style.paddingTop = '2px';
+    const badge = document.createElement('div');
+    badge.className = 'tier-badge' + (isCurrent ? ' tbadge-current' : isActive ? ' tbadge-active' : '');
+    badge.textContent = t.pts;
+    bgCell.appendChild(badge); badgesRow.appendChild(bgCell);
+  });
+
+  const lineBg = document.getElementById('gridTierLineBg');
+  const lineFill = document.getElementById('gridTierLineFill');
+  lineBg.style.left = (CELL_W / 2) + 'px';
+  lineBg.style.right = (CELL_W / 2) + 'px';
+  lineFill.style.left = (CELL_W / 2) + 'px';
+  lineFill.style.width = '0px';
+})();
+
+// ─── Init ─────────────────────────────────
+renderMatches();
+buildBuyPtsGrid('buyPtsGrid');
 </script>
 </body>
 </html>
